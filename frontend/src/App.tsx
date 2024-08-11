@@ -7,6 +7,7 @@ import { RecoilRoot } from "recoil";
 import { createBrowserRouter } from "react-router-dom";
 import Settings from "@pages/settings";
 import Login from "@pages/login";
+import Search from "@pages/pretask/Search";
 
 const Router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const Router = createBrowserRouter([
     children: [
       { index: true, element: <Login /> },
       { path: "/login", element: <Login /> },
+      { path: "/search", element: <Search /> },
     ],
   },
 ]);
