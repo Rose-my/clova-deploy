@@ -8,7 +8,6 @@ export default function Found() {
   const [location, setLocation] = useState("");
   const [locationDisplay, setLocationDisplay] = useState(true);
 
-  /* 검색*/
   useEffect(() => {
     setFilteredLocations(
       LOCATIONS.filter((location) => location.location.toLowerCase().includes(searchInput.toLowerCase())),
@@ -24,7 +23,6 @@ export default function Found() {
   }
 
   function handleModifyClick() {
-    // Clear the selected location to allow re-selection
     setLocation("");
     setLocationDisplay(true);
   }
@@ -43,7 +41,7 @@ export default function Found() {
             <ModifyBtn onClick={handleModifyClick}>수정</ModifyBtn>
           </SearchResult>
         ) : (
-          <div>
+          <SearchInputContainer>
             <SearchInput
               type="text"
               placeholder="물품이 보관된 장소를 입력해주세요."
@@ -53,7 +51,7 @@ export default function Found() {
               }}
             />
             {searchInput && <ClearBtn onClick={handleClearBtn}>X</ClearBtn>}
-          </div>
+          </SearchInputContainer>
         )}
       </SearchBar>
       <Locations $locationDisplay={locationDisplay}>
@@ -77,49 +75,92 @@ const SearchBar = styled.div`
   gap: 1rem;
   position: relative;
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
 const Text = styled.p`
-  color: black;
-  text-align: left;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 500;
+`;
+
+const SearchInputContainer = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+`;
+
+const SearchInput = styled.input`
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  font-size: 1rem;
+  transition: border-color 0.3s ease-in-out;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 4px 12px rgb(0 123 255 / 20%);
+  }
+
+  &::placeholder {
+    color: #aaa;
+  }
+`;
+
+const ClearBtn = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  padding: 2px;
+  border: none;
+  background: none;
+  color: #007bff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &:hover {
+    color: #0056b3;
+  }
 `;
 
 const Locations = styled.div<{ $locationDisplay: boolean }>`
   display: ${({ $locationDisplay }) => ($locationDisplay ? "flex" : "none")};
   flex-direction: column;
   position: absolute;
-
-  /* top: calc(100% + 0.5rem); */
   left: 80px;
-  z-index: 1000; /* Ensure it's above other content */
-
-  /* width: 100%; */
+  z-index: 1000;
   max-height: 15rem;
-  border: 1px solid #ccc;
   border-radius: 8px;
   background-color: white;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 15%);
   overflow-y: auto;
 `;
 
 const LocationBox = styled.button`
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  width: 100%;
-  padding: 1rem;
+  padding: 12px 16px;
   border: none;
   background: none;
   text-align: left;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 
   &:hover {
-    background-color: lightpink;
+    background-color: #f8f9fa;
+  }
+
+  &:active {
+    background-color: #e9ecef;
   }
 `;
 
 const Name = styled.p`
-  color: black;
+  color: #333;
+  font-size: 1rem;
 `;
 
 const SearchResult = styled.div`
@@ -127,45 +168,21 @@ const SearchResult = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 1rem;
-  border-radius: 46px;
-  background-color: palegoldenrod;
-  color: black;
-  text-align: left;
-`;
-
-const SearchInput = styled.input`
-  flex: 1;
-  height: 3.8rem;
-  padding: 0 1rem;
-  border: none;
-  border-radius: 46px;
-
-  &:focus {
-    outline: none;
-  }
-
-  &::placeholder {
-    color: gray;
-  }
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #ffe066;
+  color: #333;
+  font-size: 1rem;
 `;
 
 const ModifyBtn = styled.button`
-  padding: 0;
   border: none;
   background: none;
-  color: blue;
-  font-weight: bold;
-  text-decoration: underline;
+  color: #007bff;
+  font-size: 1.1rem;
   cursor: pointer;
-`;
 
-const ClearBtn = styled.button`
-  padding: 0;
-  border: none;
-  background: none;
-  color: blue;
-  font-weight: bold;
-  text-decoration: underline;
-  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
