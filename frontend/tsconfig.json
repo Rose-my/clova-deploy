@@ -32,7 +32,7 @@
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@types/*": ["types/*"]
+      "@type/*": ["type/*"]
     }
   },
   "include": ["src"],
