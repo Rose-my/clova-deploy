@@ -1,7 +1,14 @@
 import { LogoIc } from "@assets/index";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function index() {
+  const navigate = useNavigate();
+
+  function moveToSignup() {
+    navigate("/signup");
+  }
+
   return (
     <Container>
       <LogoIcon />
@@ -11,7 +18,9 @@ export default function index() {
       </InputFields>
       <LoginBtn type="button">로그인</LoginBtn>
       <ExtraBtns>
-        <SignupBtn type="button">회원가입</SignupBtn>
+        <SignupBtn type="button" onClick={moveToSignup}>
+          회원가입
+        </SignupBtn>
         <FindPwBtn type="button">비밀번호 찾기</FindPwBtn>
       </ExtraBtns>
     </Container>
@@ -23,6 +32,7 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   background-color: #e9ecef;
 `;
 
