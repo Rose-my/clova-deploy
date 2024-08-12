@@ -7,16 +7,16 @@ import { RecoilRoot } from "recoil";
 import { createBrowserRouter } from "react-router-dom";
 import Settings from "@pages/settings";
 import Login from "@pages/login";
-import Search from "@pages/pretask/Search";
+import Pretask from "@pages/pretask";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Settings />,
     children: [
-      { index: true, element: <Login /> },
+      { index: true, element: <Pretask /> },
       { path: "/login", element: <Login /> },
-      { path: "/search", element: <Search /> },
+      { path: "/pretask", element: <Pretask /> },
     ],
   },
 ]);

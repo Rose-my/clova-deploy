@@ -1,3 +1,4 @@
+import { PencilIc } from "@assets/index";
 import { LOCATIONS, LocationTypes } from "@core/locationData";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -32,13 +33,15 @@ export default function Found() {
   }
 
   return (
-    <>
+    <FoundContainer>
       <SearchBar>
         <Text>보관장소</Text>
         {location ? (
           <SearchResult>
             <Text>{location}</Text>
-            <ModifyBtn onClick={handleModifyClick}>수정</ModifyBtn>
+            <ModifyBtn onClick={handleModifyClick}>
+              <PencilIcon />
+            </ModifyBtn>
           </SearchResult>
         ) : (
           <SearchInputContainer>
@@ -66,10 +69,13 @@ export default function Found() {
             );
           })}
       </Locations>
-    </>
+    </FoundContainer>
   );
 }
 
+const FoundContainer = styled.div`
+  width: 100%;
+`;
 const SearchBar = styled.div`
   display: flex;
   gap: 1rem;
@@ -185,4 +191,9 @@ const ModifyBtn = styled.button`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+const PencilIcon = styled(PencilIc)`
+  width: 1.5rem;
+  height: 1.5rem;
 `;
