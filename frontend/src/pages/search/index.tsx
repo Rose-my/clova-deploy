@@ -6,6 +6,9 @@ export default function index() {
   const [ifTimeClicked, setIfTimeClicked] = useState(false);
   const [ifLocationClicked, setIfLocationClicked] = useState(false);
   const [ifGuideClicked, setIfGuideClicked] = useState(false);
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [hour, setHour] = useState("");
 
   const handleSearchClick = () => {
     // Implement search functionality here
@@ -23,6 +26,15 @@ export default function index() {
     setIfGuideClicked(!ifGuideClicked);
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (/^\d*$/.test(value)) {
+      if (name === "month") setMonth(value);
+      if (name === "day") setDay(value);
+      if (name === "hour") setHour(value);
+    }
+  };
+
   return (
     <Container>
       <InputFields>
@@ -32,7 +44,16 @@ export default function index() {
             <TimeIcon>🕒</TimeIcon>
             <p>분실 시간</p>
           </InfoBtn>
-          {ifTimeClicked && <TimeField type="text" />}
+          {ifTimeClicked && (
+            <TimeContainer>
+              <TimeInput type="text" name="month" value={month} onChange={handleInputChange} maxLength={2} />
+              <TimeText>월</TimeText>
+              <TimeInput type="text" name="day" value={day} onChange={handleInputChange} maxLength={2} />
+              <TimeText>일</TimeText>
+              <TimeInput type="text" name="hour" value={hour} onChange={handleInputChange} maxLength={2} />
+              <TimeText>시</TimeText>
+            </TimeContainer>
+          )}
           <InfoBtn type="button" onClick={handleLocationClick}>
             <TimeIcon>🕒</TimeIcon>
             <p>분실 장소</p>
@@ -105,7 +126,10 @@ const TimeIcon = styled.span`
   margin-right: 0.5rem;
 `;
 
-const TimeField = styled.input`
+const TimeContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
   position: absolute;
   top: 8rem;
   left: 0.5rem;
@@ -114,9 +138,30 @@ const TimeField = styled.input`
   border: 2px solid #ced4da;
   border-radius: 10px;
   background-color: white;
+`;
+
+const TimeInput = styled.input`
+  width: 2.5rem;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: center;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 4px 12px rgb(0 123 255 / 20%);
+  }
+
+  &::placeholder {
+    color: #adb5bd;
+  }
+`;
+
+const TimeText = styled.span`
   color: #495057;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
 `;
 
 const SearchBtn = styled.button`
