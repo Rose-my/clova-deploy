@@ -22,7 +22,6 @@
 
     /* Path and Alias */
     "baseUrl": "./src",
-    "types": ["node"],
     "paths": {
       "@api/*": ["api/*"],
       "@atom/*": ["atom/*"],
