@@ -10,7 +10,7 @@ export default function index() {
   const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    navigate("/results");
+    navigate("/results-top");
   };
 
   const handleGuidelineClick = () => {
