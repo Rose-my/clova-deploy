@@ -1,25 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Search from "@pages/pretask/Search";
 
 export default function index() {
-  const [ifTimeClicked, setIfTimeClicked] = useState(false);
-  const [ifLocationClicked, setIfLocationClicked] = useState(false);
   const [ifGuideClicked, setIfGuideClicked] = useState(false);
-  const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
-  const [hour, setHour] = useState("");
+  const [date, setDate] = useState("");
+  const [startHour, setStartHour] = useState("");
+  const [endHour, setEndHour] = useState("");
 
   const handleSearchClick = () => {
     // Implement search functionality here
-  };
-
-  const handleTimeClick = () => {
-    setIfTimeClicked(!ifTimeClicked);
-  };
-
-  const handleLocationClick = () => {
-    setIfLocationClicked(!ifLocationClicked);
   };
 
   const handleGuidelineClick = () => {
@@ -29,9 +18,9 @@ export default function index() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     if (/^\d*$/.test(value)) {
-      if (name === "month") setMonth(value);
-      if (name === "day") setDay(value);
-      if (name === "hour") setHour(value);
+      if (name === "date") setDate(value);
+      if (name === "startHour") setStartHour(value);
+      if (name === "endHour") setEndHour(value);
     }
   };
 
@@ -39,27 +28,42 @@ export default function index() {
     <Container>
       <InputFields>
         <SearchField type="text" placeholder="검색하고 싶은 물건에 대해 설명해주세요" />
-        <InfoFields>
-          <InfoBtn type="button" onClick={handleTimeClick}>
-            <TimeIcon>🕒</TimeIcon>
-            <p>분실 시간</p>
-          </InfoBtn>
-          {ifTimeClicked && (
-            <TimeContainer>
-              <TimeInput type="text" name="month" value={month} onChange={handleInputChange} maxLength={2} />
-              <TimeText>월</TimeText>
-              <TimeInput type="text" name="day" value={day} onChange={handleInputChange} maxLength={2} />
-              <TimeText>일</TimeText>
-              <TimeInput type="text" name="hour" value={hour} onChange={handleInputChange} maxLength={2} />
-              <TimeText>시</TimeText>
-            </TimeContainer>
-          )}
-          <InfoBtn type="button" onClick={handleLocationClick}>
-            <TimeIcon>🕒</TimeIcon>
-            <p>분실 장소</p>
-          </InfoBtn>
-          {ifLocationClicked && <Search />}
-        </InfoFields>
+        <Field>
+          <Title>분실 시간</Title>
+          <TimeContainer>
+            <DateInput
+              type="text"
+              name="month"
+              placeholder="2024년 8월 8일"
+              value={date}
+              onChange={handleInputChange}
+            />
+            <TimeInput
+              type="text"
+              name="startHour"
+              value={startHour}
+              placeholder="14"
+              onChange={handleInputChange}
+              maxLength={2}
+            />
+            <TimeText>시 부터</TimeText>
+            <TimeInput
+              type="text"
+              name="endHour"
+              value={endHour}
+              placeholder="21"
+              onChange={handleInputChange}
+              maxLength={2}
+            />
+            <TimeText>시 사이</TimeText>
+          </TimeContainer>
+        </Field>
+        <Field>
+          <Title>분실 장소</Title>
+          <LocationContainer>
+            <LocationInput type="text" name="location" />
+          </LocationContainer>
+        </Field>
       </InputFields>
       <SearchBtn type="button" onClick={handleSearchClick}>
         검색하기
@@ -103,41 +107,43 @@ const SearchField = styled.input`
   }
 `;
 
-const InfoFields = styled.div`
+const Field = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 1rem;
-  justify-content: space-around;
-  align-items: center;
 `;
 
-const InfoBtn = styled.button`
+const Title = styled.p`
   display: flex;
-  position: relative;
-  width: 100%;
-  border: 2px solid #ced4da;
-  border-radius: 10px;
-
-  &::placeholder {
-    color: #adb5bd;
-  }
-`;
-
-const TimeIcon = styled.span`
-  margin-right: 0.5rem;
 `;
 
 const TimeContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  position: absolute;
-  top: 8rem;
-  left: 0.5rem;
-  z-index: 1;
-  padding: 0.85rem 1.25rem;
-  border: 2px solid #ced4da;
-  border-radius: 10px;
-  background-color: white;
+`;
+
+const LocationContainer = styled.div`
+  display: flex;
+`;
+
+const DateInput = styled.input`
+  width: auto;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: left;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 4px 12px rgb(0 123 255 / 20%);
+  }
+
+  &::placeholder {
+    color: #adb5bd;
+  }
 `;
 
 const TimeInput = styled.input`
@@ -146,7 +152,7 @@ const TimeInput = styled.input`
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 1rem;
-  text-align: center;
+  text-align: left;
 
   &:focus {
     border-color: #007bff;
@@ -162,6 +168,25 @@ const TimeInput = styled.input`
 const TimeText = styled.span`
   color: #495057;
   font-size: 1rem;
+`;
+
+const LocationInput = styled.input`
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-align: left;
+
+  &:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 4px 12px rgb(0 123 255 / 20%);
+  }
+
+  &::placeholder {
+    color: #adb5bd;
+  }
 `;
 
 const SearchBtn = styled.button`
