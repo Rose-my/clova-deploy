@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function index() {
@@ -6,9 +7,10 @@ export default function index() {
   const [date, setDate] = useState("");
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
+  const navigate = useNavigate();
 
   const handleSearchClick = () => {
-    // Implement search functionality here
+    navigate("/results");
   };
 
   const handleGuidelineClick = () => {
