@@ -8,6 +8,9 @@ export default function index() {
   function moveToSignup() {
     navigate("/signup");
   }
+  function moveToSearch() {
+    navigate("/search");
+  }
 
   return (
     <Container>
@@ -16,7 +19,9 @@ export default function index() {
         <IdField type="text" placeholder="아이디" />
         <PwField type="password" placeholder="비밀번호" />
       </InputFields>
-      <LoginBtn type="button">로그인</LoginBtn>
+      <LoginBtn type="button" onClick={moveToSearch}>
+        로그인
+      </LoginBtn>
       <ExtraBtns>
         <SignupBtn type="button" onClick={moveToSignup}>
           회원가입
