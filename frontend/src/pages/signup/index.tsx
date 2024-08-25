@@ -1,9 +1,10 @@
-import { LogoIc } from "@assets/index";
+import { BackIc, LogoTxtIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import CustomCheckbox from "./components/CustomCheckbox";
 
-export default function Signup() {
+export default function index() {
   const navigate = useNavigate();
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
@@ -58,36 +59,17 @@ export default function Signup() {
     setNickname(e.target.value);
   };
 
-  const handleAllTermsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setTermsAccepted(checked);
-    setMandatoryAccepted(checked);
-    setOptionalAccepted(checked);
-  };
-
-  const handleMandatoryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setMandatoryAccepted(checked);
-    if (!checked) {
-      setTermsAccepted(false); // Uncheck the "Agree All" if 필수 is unchecked
-    }
-  };
-
-  const handleOptionalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
-    setOptionalAccepted(checked);
-    if (!checked) {
-      setTermsAccepted(false); // Uncheck the "Agree All" if 선택 is unchecked
-    }
-  };
-
   return (
     <Container>
       <BackBtn type="button" onClick={moveToLogin}>
-        뒤로가기
+        <BackIcon />
       </BackBtn>
-      <LogoIcon />
+      <LogoContainer>
+        <LogoTxtIcon />
+      </LogoContainer>
+
       <SignupFields>
+        <FieldText>아이디</FieldText>
         <IdBox>
           <IdField type="text" placeholder="아이디" />
           <DomainText>@ewha.ac.kr</DomainText>
@@ -96,13 +78,20 @@ export default function Signup() {
           </SendCodeBtn>
         </IdBox>
         {showCodeInput && (
-          <CodeBox>
-            <CodeField type="text" placeholder="인증코드 입력" />
-            <Countdown>{formatTime(timeLeft)}</Countdown>
-          </CodeBox>
+          <div>
+            <FieldText>인증코드 입력</FieldText>
+            <CodeBox>
+              <CodeField type="text" placeholder="인증코드 입력" />
+              <Countdown>{formatTime(timeLeft)}</Countdown>
+            </CodeBox>
+          </div>
         )}
+        <FieldText>비밀번호</FieldText>
         <PwBox>
           <PwField type="password" placeholder="비밀번호" value={password} onChange={handlePasswordChange} />
+        </PwBox>
+        <FieldText>비밀번호 확인</FieldText>
+        <PwBox>
           <PwCheckField
             type="password"
             placeholder="비밀번호 재입력"
@@ -114,6 +103,7 @@ export default function Signup() {
             <PasswordMismatchText>비밀번호가 일치하지 않습니다.</PasswordMismatchText>
           )}
         </PwBox>
+        <FieldText>닉네임</FieldText>
         <NicknameBox>
           <NicknameField
             type="text"
@@ -125,17 +115,34 @@ export default function Signup() {
         </NicknameBox>
       </SignupFields>
       <Description>
-        <Checkbox>
-          <input type="checkbox" checked={termsAccepted} onChange={handleAllTermsChange} /> 약관 전체동의
-        </Checkbox>
-        <Checkbox>
-          <input type="checkbox" checked={mandatoryAccepted} onChange={handleMandatoryChange} /> (필수) 이용약관 및
-          개인정보수집 정보동의
-        </Checkbox>
-        <Checkbox>
-          <input type="checkbox" checked={optionalAccepted} onChange={handleOptionalChange} /> (선택) 이벤트 혜택 및
-          광고성 정보동의
-        </Checkbox>
+        <CustomCheckbox
+          checked={termsAccepted}
+          onChange={() => {
+            const newChecked = !termsAccepted;
+            setTermsAccepted(newChecked);
+            setMandatoryAccepted(newChecked);
+            setOptionalAccepted(newChecked);
+          }}
+          label="약관 전체동의"
+        />
+        <CustomCheckbox
+          checked={mandatoryAccepted}
+          onChange={() => {
+            const newChecked = !mandatoryAccepted;
+            setMandatoryAccepted(newChecked);
+            if (!newChecked) setTermsAccepted(false); // Uncheck "Agree All" if 필수 is unchecked
+          }}
+          label="(필수) 이용약관 및 개인정보수집 정보동의"
+        />
+        <CustomCheckbox
+          checked={optionalAccepted}
+          onChange={() => {
+            const newChecked = !optionalAccepted;
+            setOptionalAccepted(newChecked);
+            if (!newChecked) setTermsAccepted(false); // Uncheck "Agree All" if 선택 is unchecked
+          }}
+          label="(선택) 이벤트 혜택 및 광고성 정보동의"
+        />
         {mandatoryAccepted === false && <MandatoryNotice>필수 약관에 동의해야 회원가입이 가능합니다.</MandatoryNotice>}
       </Description>
       <SignupBtn type="button" onClick={moveToLogin} disabled={!allFieldsValid}>
@@ -148,43 +155,61 @@ export default function Signup() {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100%;
-  background-color: #f5f7fa;
+  height: 100dvh;
+  padding: 4rem 2rem;
 `;
 
+// ----- 뒤로가기버튼
 const BackBtn = styled.button`
   display: flex;
+  margin: 0;
+  padding: 0;
   border: none;
-  background: none;
-  color: #007bff;
-  font-size: 1rem;
-  text-decoration: underline;
   cursor: pointer;
-
-  &:hover {
-    color: #0056b3;
-  }
 `;
 
-const LogoIcon = styled(LogoIc)`
-  width: 14rem;
-  height: auto;
+const BackIcon = styled(BackIc)`
+  width: 2.7rem;
+  height: 2.1rem;
   margin-bottom: 2rem;
 `;
 
+// ----- 로고
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LogoTxtIcon = styled(LogoTxtIc)`
+  width: 12.28rem;
+  height: 3.4668rem;
+  margin-bottom: 3rem;
+`;
+
+// ----- 입력 필드
 const SignupFields = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   width: 100%;
   max-width: 50rem;
 `;
 
+const FieldText = styled.p`
+  ${({ theme }) => theme.fonts.Field};
+
+  margin-bottom: 0.5rem;
+  color: #696969;
+  font-size: 1.2rem;
+`;
+
+//-----아이디 필드
 const IdBox = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 1.5rem;
 `;
 
 const IdField = styled.input`
@@ -207,17 +232,19 @@ const IdField = styled.input`
 `;
 
 const DomainText = styled.span`
+  ${({ theme }) => theme.fonts.Field};
+
   margin-left: 0.5rem;
   color: #495057;
-  font-size: 1rem;
+  font-size: 1.3rem;
 `;
 
 const SendCodeBtn = styled.button`
   margin-left: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   border: none;
-  border-radius: 8px;
-  background-color: #007bff;
+  border-radius: 7px;
+  background-color: #8c8c8c;
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -226,12 +253,12 @@ const SendCodeBtn = styled.button`
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 12px rgb(0 123 255 / 40%);
+    background-color: #197a3a;
+    box-shadow: 0 4px 12px rgb(0 10 2 / 40%);
   }
 
   &:active {
-    background-color: #004494;
+    background-color: #15642f;
   }
 `;
 
@@ -239,6 +266,7 @@ const CodeBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1.5rem;
 `;
 
 const CodeField = styled.input`
@@ -261,15 +289,20 @@ const CodeField = styled.input`
 `;
 
 const Countdown = styled.span`
+  ${({ theme }) => theme.fonts.Field};
+
   margin-left: 1rem;
   color: #495057;
-  font-size: 1rem;
+  font-size: 1.3rem;
 `;
+
+//-----패스워드 입력
 
 const PwBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 const PwField = styled.input`
@@ -311,12 +344,13 @@ const PwCheckField = styled.input<{ isValid: boolean }>`
 const PasswordMismatchText = styled.span`
   margin-top: -0.5rem;
   color: #dc3545;
-  font-size: 0.875rem;
+  font-size: 1rem;
 `;
 
 const NicknameBox = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.5rem;
 `;
 
 const NicknameField = styled.input`
@@ -341,42 +375,33 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`;
-
-const Checkbox = styled.label`
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-
-  input {
-    margin-right: 0.5rem;
-  }
+  margin-top: 1.5rem;
 `;
 
 const MandatoryNotice = styled.span`
   color: #dc3545;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 `;
 
 const SignupBtn = styled.button<{ disabled: boolean }>`
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
+  margin-top: 3rem;
+  padding: 0.85rem;
   border: none;
   border-radius: 8px;
-  background-color: ${({ disabled }) => (disabled ? "#ced4da" : "#007bff")};
+  background-color: ${({ disabled }) => (disabled ? "#ced4da" : "#197a3a")};
   color: white;
-  font-size: 1rem;
+  font-size: 1.5rem;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: ${({ disabled }) => !disabled && "#0056b3"};
-    box-shadow: ${({ disabled }) => !disabled && "0 4px 12px rgb(0 123 255 / 40%)"};
+    background-color: ${({ disabled }) => !disabled && "#197a3a"};
+    box-shadow: ${({ disabled }) => !disabled && "0 4px 12px rgb(0 10 2 / 40%)"};
   }
 
   &:active {
-    background-color: ${({ disabled }) => !disabled && "#004494"};
+    background-color: ${({ disabled }) => !disabled && "#28a745"};
   }
 `;
