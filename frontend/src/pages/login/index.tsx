@@ -1,4 +1,4 @@
-import { LogoIc } from "@assets/index";
+import { LogoIc, LogoTxtIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -15,18 +15,22 @@ export default function index() {
   return (
     <Container>
       <LogoIcon />
+      <LogoTxtIcon />
       <InputFields>
-        <IdField type="text" placeholder="아이디" />
-        <PwField type="password" placeholder="비밀번호" />
+        <IdContainer>
+          <Field type="text" placeholder="아이디" />
+          <DomainText>@ewha.ac.kr</DomainText>
+        </IdContainer>
+        <Field type="password" placeholder="비밀번호" />
       </InputFields>
       <LoginBtn type="button" onClick={moveToSearch}>
         로그인
       </LoginBtn>
       <ExtraBtns>
-        <SignupBtn type="button" onClick={moveToSignup}>
+        <ExtraBtn type="button" onClick={moveToSignup}>
           회원가입
-        </SignupBtn>
-        <FindPwBtn type="button">비밀번호 찾기</FindPwBtn>
+        </ExtraBtn>
+        <ExtraBtn type="button">비밀번호 찾기</ExtraBtn>
       </ExtraBtns>
     </Container>
   );
@@ -35,37 +39,53 @@ export default function index() {
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #e9ecef;
+  height: 100dvh;
+  padding: 0 1.5rem;
 `;
 
 const LogoIcon = styled(LogoIc)`
-  width: 14rem;
-  height: auto;
-  margin-bottom: 2.5rem;
+  width: 6.6rem;
+  height: 6.4rem;
+  margin-top: 8.7rem;
+  margin-bottom: 1.5rem;
+`;
+
+const LogoTxtIcon = styled(LogoTxtIc)`
+  width: 14.5rem;
+  height: 4rem;
+  margin-bottom: 3rem;
 `;
 
 const InputFields = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 2rem;
   width: 100%;
-  max-width: 22rem;
+  max-width: 320px;
+  margin-top: 3rem;
 `;
 
-const IdField = styled.input`
-  padding: 0.85rem 1.25rem;
-  border: 2px solid #ced4da;
-  border-radius: 10px;
-  font-size: 1rem;
+const IdContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Field = styled.input`
+  flex: 1;
+  ${({ theme }) => theme.fonts.Field};
+
+  padding: 0.85rem 0;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  color: black;
+  font-size: 1.5rem;
   transition: border-color 0.3s ease;
 
   &:focus {
-    border-color: #495057;
+    border-bottom-color: #495057;
     outline: none;
-    box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
   }
 
   &::placeholder {
@@ -73,33 +93,24 @@ const IdField = styled.input`
   }
 `;
 
-const PwField = styled.input`
-  padding: 0.85rem 1.25rem;
-  border: 2px solid #ced4da;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+const DomainText = styled.span`
+  ${({ theme }) => theme.fonts.Field};
 
-  &:focus {
-    border-color: #495057;
-    outline: none;
-    box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
-  }
-
-  &::placeholder {
-    color: #adb5bd;
-  }
+  font-size: 1.5rem;
 `;
+
 const LoginBtn = styled.button`
   width: 100%;
-  max-width: 22rem;
-  margin-top: 1.25rem;
-  padding: 0.85rem 1.25rem;
+  ${({ theme }) => theme.fonts.Field};
+
+  max-width: 320px;
+  margin-top: 2rem;
+  padding: 0.85rem;
   border: none;
-  border-radius: 10px;
-  background-color: #007bff;
+  border-radius: 8px;
+  background-color: #8c8c8c;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -108,12 +119,12 @@ const LoginBtn = styled.button`
     box-shadow 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
-    box-shadow: 0 4px 12px rgb(0 123 255 / 40%);
+    background-color: #197a3a;
+    box-shadow: 0 4px 12px rgb(0 10 2 / 40%);
   }
 
   &:active {
-    background-color: #004494;
+    background-color: #197a3a;
   }
 `;
 
@@ -121,34 +132,23 @@ const ExtraBtns = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 22rem;
-  margin-top: 1rem;
+  max-width: 320px;
+  margin-top: 3rem;
 `;
 
-const SignupBtn = styled.button`
+const ExtraBtn = styled.button`
+  ${({ theme }) => theme.fonts.Field};
+
   border: none;
   background: none;
-  color: #007bff;
-  font-size: 0.9rem;
+  color: #8c8c8c;
+  font-size: 1.3rem;
+  font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #0056b3;
-  }
-`;
-
-const FindPwBtn = styled.button`
-  border: none;
-  background: none;
-  color: #007bff;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  cursor: pointer;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #0056b3;
+    color: #197a3a;
   }
 `;

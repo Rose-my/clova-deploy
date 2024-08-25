@@ -29,7 +29,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100dvh;
@@ -40,6 +39,7 @@ const LogoContainer = styled.section`
   flex-direction: column;
   gap: 1.6rem;
   align-items: center;
+  margin-top: 19.1rem;
 `;
 
 const LogoTxtIcon = styled(LogoTxtIc)`
@@ -53,7 +53,7 @@ const LogoIcon = styled(LogoIc)`
 `;
 
 const Text = styled.p`
-  color: #8c8c8c;
-  font-size: 1.1rem;
-  font-weight: 500;
+  ${({ theme }) => theme.fonts.Field};
+
+  font-size: 1.8rem;
 `;
