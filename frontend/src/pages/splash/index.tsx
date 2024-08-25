@@ -1,4 +1,4 @@
-import { LogoIc } from "@assets/index";
+import { LogoTxtIc, LogoIc } from "@assets/index";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -15,20 +15,24 @@ export default function index() {
   }, [navigate]);
 
   return (
-    <Wrapper>
+    <Container>
       <LogoContainer>
         <LogoIcon />
-        <Text>클릭 한번에 바로 찾는 분실물</Text>
+        <LogoTxtIcon />
       </LogoContainer>
-    </Wrapper>
+      <Text>클릭 한번에 바로 찾는 분실물</Text>
+    </Container>
   );
 }
 
-const Wrapper = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100dvh;
 `;
 
 const LogoContainer = styled.section`
@@ -38,13 +42,18 @@ const LogoContainer = styled.section`
   align-items: center;
 `;
 
-const LogoIcon = styled(LogoIc)`
+const LogoTxtIcon = styled(LogoTxtIc)`
   width: 15rem;
   height: 3.9rem;
 `;
 
+const LogoIcon = styled(LogoIc)`
+  width: 10rem;
+  height: 10rem;
+`;
+
 const Text = styled.p`
-  color: #333;
+  color: #8c8c8c;
   font-size: 1.1rem;
   font-weight: 500;
 `;
