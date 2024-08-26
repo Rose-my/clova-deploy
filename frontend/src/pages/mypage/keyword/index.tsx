@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-export default function Index() {
+export default function index() {
   const [keyword, setKeyword] = useState<string>("");
   const [keywords, setKeywords] = useState<string[]>([]);
 

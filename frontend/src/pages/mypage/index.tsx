@@ -42,8 +42,9 @@ const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.main_bg};
 `;
@@ -77,9 +78,11 @@ const Id = styled.p`
 const Menu = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: scroll;
   width: 100%;
   max-width: 400px;
   margin-top: 2rem;
+  padding: 0 0 8rem;
 `;
 
 const MenuItem = styled.div`
