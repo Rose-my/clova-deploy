@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^22.2.0",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-query": "^3.39.3",
-    "react-router-dom": "^6.25.1"
+    "react-router-dom": "^6.25.1",
+    "styled-reset": "^4.5.2"
   },
   "devDependencies": {
     "@stylelint/postcss-css-in-js": "^0.38.0",
@@ -32,6 +35,8 @@
     "postcss-styled-syntax": "^0.6.4",
     "postcss-syntax": "^0.36.2",
     "prettier": "^3.3.3",
+    "recoil": "^0.7.7",
+    "styled-components": "^6.1.12",
     "stylelint": "^16.7.0",
     "stylelint-config-recess-order": "^5.0.1",
     "stylelint-config-standard": "^36.0.1",
