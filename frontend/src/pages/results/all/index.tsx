@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
-
-import { PlusIc } from "@assets/index";
 import Header from "../components/Header";
 import Footer from "@pages/search/components/Footer";
 
@@ -112,22 +110,4 @@ const Found = styled.p`
 const Date = styled.p`
   color: #8c8c8c;
   font-size: 1rem;
-`;
-
-const BtnWrapper = styled.button`
-  display: inline-flex;
-  gap: 10px;
-  align-items: flex-start;
-  position: absolute;
-  right: 2rem;
-  bottom: 10rem;
-  padding: 1.2rem;
-  border-radius: 100px;
-  background-color: #197a3a;
-  cursor: pointer;
-`;
-
-const PlusIcon = styled(PlusIc)`
-  width: 2.4rem;
-  height: 2.4rem;
 `;
