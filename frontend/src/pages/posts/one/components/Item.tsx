@@ -30,16 +30,11 @@ export default function Item() {
           </Wrapper>
           <Wrapper>
             <Text>물건 특징</Text>
-            <NormalTxt>
-              왼쪽 헤드셋에 헬로키티 스티커 부착 ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다.
-            </NormalTxt>
+            <NormalTxt>왼쪽 헤드셋에 헬로키티 스티커 부착, ECC 신한열람실 74번 자리 주변 바닥에서 습득.</NormalTxt>
           </Wrapper>
           <Wrapper>
             <Text>전달 사항</Text>
-            <NormalTxt>
-              ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다. ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다.
-              ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다.
-            </NormalTxt>
+            <NormalTxt>ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다.</NormalTxt>
           </Wrapper>
         </SubDetail>
         <Divider />
@@ -80,8 +75,10 @@ const SubDetail = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
-  padding: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
   background-color: white;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
 `;
 
 const Wrapper = styled.div`
@@ -89,21 +86,19 @@ const Wrapper = styled.div`
   gap: 1.6rem;
   align-items: center;
   width: 100%;
-  height: auto;
 `;
 
 const Text = styled.p`
-  ${({ theme }) => theme.fonts.Field};
-
-  color: black;
+  flex-basis: 20%;
+  color: #555;
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 500;
 `;
 
 const Found = styled.p`
   color: #197a3a;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 600;
 `;
 
 const NormalTxt = styled.p`
@@ -115,49 +110,44 @@ const NormalTxt = styled.p`
 `;
 
 const Notify = styled.p`
-  height: auto;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   color: #495057;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-align: center;
 `;
 
 const Divider = styled.div`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #d6d6d6;
-`;
-
-const Btn = styled.button`
-  width: 100%;
-  ${({ theme }) => theme.fonts.Field};
-
-  margin-top: 1.25rem;
-  padding: 1rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #197a3a;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    box-shadow 0.3s ease;
-
-  &:hover {
-    background-color: #197a3a;
-    box-shadow: 0 4px 12px rgb(0 10 2 / 40%);
-  }
-
-  &:active {
-    background-color: #197a3a;
-  }
+  margin: 1.5rem 0;
+  border-bottom: 1px solid #ececec;
 `;
 
 const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 2rem;
+`;
+
+const Btn = styled.button`
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #197a3a;
+  background-image: linear-gradient(to right, #197a3a, #1b9a5f);
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #14632d;
+    box-shadow: 0 4px 12px rgb(0 123 85 / 30%);
+  }
+
+  &:active {
+    background-color: #0f4f23;
+  }
 `;
