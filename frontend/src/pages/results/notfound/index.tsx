@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../components/Header";
+import Footer from "@pages/search/components/Footer";
 
 export default function index() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export default function index() {
       <Btn type="button" onClick={() => navigate("/mypage/keyword")}>
         키워드 알림 설정
       </Btn>
+      <Footer />
     </Container>
   );
 }
@@ -26,9 +28,10 @@ const Container = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 100dvh;
-  background-color: white;
+  background-color: #f9f9f9;
 `;
 
 const Explanation = styled.p`

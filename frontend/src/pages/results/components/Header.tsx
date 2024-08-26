@@ -29,7 +29,7 @@ const Container = styled.div`
   top: 0;
   width: 100%;
   padding: 2rem;
-  background-color: white;
+  background-color: #f9f9f9;
 `;
 
 const Title = styled.p`
