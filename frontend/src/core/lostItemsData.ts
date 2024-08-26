@@ -23,7 +23,31 @@ const LOSTITEMS: LostItemsTypes[] = [
   {
     id: 3,
     img: lostImg,
-    location: "park",
+    location: "3층 경비실",
+    date: "2024-04-01",
+  },
+  {
+    id: 4,
+    img: lostImg,
+    location: "v",
+    date: "2024-04-01",
+  },
+  {
+    id: 5,
+    img: lostImg,
+    location: "학생서비스센터",
+    date: "2024-04-01",
+  },
+  {
+    id: 6,
+    img: lostImg,
+    location: "3층 경비실",
+    date: "2024-04-01",
+  },
+  {
+    id: 7,
+    img: lostImg,
+    location: "학생서비스센터",
     date: "2024-04-01",
   },
 ];
