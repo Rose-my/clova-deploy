@@ -26,6 +26,9 @@ import EwhaPointIc from "./icon/ewhaPointIc.svg?react";
 
 import PlusIc from "./icon/plusIc.svg?react";
 
+import LeftArrowIc from "./icon/leftArrowIc.svg?react";
+import RightArrowIc from "./icon/rightArrowIc.svg?react";
+
 export {
   PencilIc,
   LogoTxtIc,
@@ -44,4 +47,6 @@ export {
   EmartPointIc,
   EwhaPointIc,
   PlusIc,
+  LeftArrowIc,
+  RightArrowIc,
 };
