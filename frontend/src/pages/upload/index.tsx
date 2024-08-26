@@ -7,7 +7,7 @@ import Header from "./components/Header";
 
 export default function Index() {
   const navigate = useNavigate();
-  const [image, setImage] = useState(null);
+
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [category, setCategory] = useState("");
@@ -16,26 +16,18 @@ export default function Index() {
   const [storage, setStorage] = useState("");
   const [notes, setNotes] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const [modelImgurl, setModelImgUrl] = useState<File>();
-  const [verified, isVerified] = useState(true);
+  const [lostImgUrl, setLostImgUrl] = useState<File>();
+  const [, isVerified] = useState(true);
 
   const uploadImg = (event: React.ChangeEvent<HTMLInputElement>) => {
     const imgObj = event.target.files;
-    readImg({ input: imgObj, setUrl: setModelImgUrl, setVerified: isVerified });
+    readImg({ input: imgObj, setUrl: setLostImgUrl, setVerified: isVerified });
   };
 
   const handleSubmit = () => {
-    console.log({
-      image,
-      date,
-      time,
-      category,
-      features,
-      location,
-      storage,
-      notes,
+    navigate("/upload/one", {
+      state: { lostImgUrl: lostImgUrl },
     });
-    navigate("/upload/one");
   };
 
   return (
@@ -127,7 +119,6 @@ export default function Index() {
           />
         </FormGroup>
       </Form>
-
       <SubmitButton onClick={handleSubmit}>등록 하기</SubmitButton>
       <FooterText>누군가의 잃어버린 물건을 등록해주셔서 감사합니다.</FooterText>
     </Container>

@@ -1,21 +1,22 @@
 import styled from "styled-components";
-import BigImg from "@assets/lost.png";
 
 import Item from "../components/Item";
 import { BackIc } from "@assets/index";
 import { BtnWrapper } from "@styles/commonStyle";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
 export default function index() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { lostImgUrl } = location.state as { lostImgUrl: File };
 
   return (
     <Container>
       <BtnWrapper type="button" onClick={() => navigate("/mypage/upload")}>
         <BackIcon />
       </BtnWrapper>
-      <Image src={BigImg} alt="LostItem" />
+      <Image src={URL.createObjectURL(lostImgUrl)} alt="LostItem" />
       <Item />
       <Footer />
     </Container>
