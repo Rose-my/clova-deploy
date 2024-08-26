@@ -3,6 +3,7 @@ import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "./components/Header";
+import { PlusIc } from "@assets/index";
 
 export default function index() {
   const navigate = useNavigate();
@@ -25,6 +26,9 @@ export default function index() {
           </Item>
         ))}
       </FullItems>
+      <BtnWrapper type="button" onClick={() => navigate("/upload")}>
+        <PlusIcon />
+      </BtnWrapper>
       <Footer />
     </Container>
   );
@@ -96,4 +100,22 @@ const Found = styled.p`
 const Date = styled.p`
   color: #8c8c8c;
   font-size: 1rem;
+`;
+
+const BtnWrapper = styled.button`
+  display: inline-flex;
+  gap: 10px;
+  align-items: flex-start;
+  position: absolute;
+  right: 2rem;
+  bottom: 10rem;
+  padding: 1.2rem;
+  border-radius: 100px;
+  background-color: #197a3a;
+  cursor: pointer;
+`;
+
+const PlusIcon = styled(PlusIc)`
+  width: 2.4rem;
+  height: 2.4rem;
 `;

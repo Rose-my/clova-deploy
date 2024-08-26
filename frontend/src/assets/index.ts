@@ -17,6 +17,15 @@ import FooterLocationIc from "./icon/footerLocationIc.svg?react";
 import FooterMyIc from "./icon/footerMyIc.svg?react";
 import FooterSearchIc from "./icon/footerSearchIc.svg?react";
 
+import ProfileIc from "./icon/profileIc.svg?react";
+
+import MoveArrowIc from "./icon/moveArrowIc.svg?react";
+
+import EmartPointIc from "./icon/emartPointIc.svg?react";
+import EwhaPointIc from "./icon/ewhaPointIc.svg?react";
+
+import PlusIc from "./icon/plusIc.svg?react";
+
 export {
   PencilIc,
   LogoTxtIc,
@@ -30,4 +39,9 @@ export {
   FooterLocationIc,
   FooterMyIc,
   FooterSearchIc,
+  ProfileIc,
+  MoveArrowIc,
+  EmartPointIc,
+  EwhaPointIc,
+  PlusIc,
 };

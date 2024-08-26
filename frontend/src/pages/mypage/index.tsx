@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Title from "./components/Title";
 import { MoveArrowIc, ProfileIc } from "@assets/index";
 
 export default function index() {
@@ -9,7 +9,7 @@ export default function index() {
 
   return (
     <Container>
-      <Header title="마이페이지" url="/mypage" />
+      <Title />
       <ProfileSection>
         <ProfileIcon />
         <Nickname>망고주스</Nickname>
