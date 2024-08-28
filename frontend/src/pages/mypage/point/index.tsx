@@ -54,7 +54,7 @@ const Container = styled.section`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.main_bg};
 `;
