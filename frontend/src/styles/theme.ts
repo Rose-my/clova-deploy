@@ -34,10 +34,18 @@ const colors = {
 
 const fonts = {
   Field: css`
+    font-family: Pretendard;
     color: #8c8c8c;
     font-style: normal;
     font-weight: 700;
     line-height: 140%; /* 25.2px */
+  `,
+  Footer: css`
+    font-family: Pretendard;
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 14px; /* 140% */
   `,
 };
 

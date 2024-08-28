@@ -58,10 +58,14 @@ const AcvBtnWrapper = styled.button`
 `;
 
 const DeactivateText = styled.p`
+  ${({ theme }) => theme.fonts.Footer};
+
   color: #3f3e3e;
 `;
 
 const ActivateText = styled.p`
+  ${({ theme }) => theme.fonts.Footer};
+
   color: black;
 `;
 
