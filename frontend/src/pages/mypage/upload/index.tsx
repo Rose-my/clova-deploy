@@ -13,7 +13,7 @@ export default function index() {
       <Header title="등록 물품" url="/mypage" />
       <FullItems>
         {LOSTITEMS.map((item) => (
-          <Item type="button" key={item.id} onClick={() => navigate("/upload/one")}>
+          <Item type="button" key={item.id} onClick={() => navigate("/posts-one")}>
             <Image src={item.img} alt={`Lost Item ${item.id}`} />
             <Details>
               <Title>에어팟 프로</Title>
