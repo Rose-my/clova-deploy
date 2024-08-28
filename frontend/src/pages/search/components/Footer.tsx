@@ -60,13 +60,13 @@ const AcvBtnWrapper = styled.button`
 const DeactivateText = styled.p`
   ${({ theme }) => theme.fonts.Field};
 
-  color: #8c8c8c;
+  color: #3f3e3e;
 `;
 
 const ActivateText = styled.p`
   ${({ theme }) => theme.fonts.Field};
 
-  color: white;
+  color: black;
 `;
 
 const FooterLocationIcon = styled(FooterLocationIc)`
