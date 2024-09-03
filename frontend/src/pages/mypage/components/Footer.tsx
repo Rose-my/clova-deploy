@@ -16,7 +16,7 @@ export default function Footer() {
   }
 
   function moveToPosts() {
-    navigate("/posts-all");
+    navigate("/found/all");
   }
 
   return (
