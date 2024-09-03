@@ -51,7 +51,7 @@ const Router = createBrowserRouter([
       { path: "/found/all", element: <FoundAll /> },
       { path: "/found/one", element: <FoundOne /> },
 
-      /*------업로드-------*/
+      /*------등록하기-------*/
       { path: "/upload", element: <Upload /> },
 
       /*------마이페이지---------*/
@@ -60,7 +60,7 @@ const Router = createBrowserRouter([
       { path: "/mypage/keyword", element: <MypageKeyword /> },
       { path: "/mypage/point", element: <MypagePoint /> },
 
-      /*-----내가 업로드한------ */
+      /*-----내가 등록한------ */
       { path: "/myupload/all", element: <MyuploadAll /> },
       { path: "/myupload/one", element: <MyuploadOne /> },
     ],
