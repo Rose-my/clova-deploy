@@ -16,23 +16,23 @@ export default function Footer() {
   }
 
   function moveToPosts() {
-    navigate("/posts-all");
+    navigate("/found/all");
   }
 
   return (
     <Container>
-      <BtnWrapper type="button" onClick={moveToPosts}>
+      <AcvBtnWrapper type="button" onClick={moveToPosts}>
         <FooterLocationIcon />
-        <DeactivateText>분실물 찾기</DeactivateText>
-      </BtnWrapper>
+        <ActivateText>분실물 찾기</ActivateText>
+      </AcvBtnWrapper>
       <BtnWrapper type="button" onClick={moveToExplore}>
         <FooterSearchIcon />
         <DeactivateText>검색하기</DeactivateText>
       </BtnWrapper>
-      <AcvBtnWrapper type="button" onClick={moveToMypage}>
+      <BtnWrapper type="button" onClick={moveToMypage}>
         <FooterMyIcon />
-        <ActivateText>마이페이지</ActivateText>
-      </AcvBtnWrapper>
+        <DeactivateText>마이페이지</DeactivateText>
+      </BtnWrapper>
     </Container>
   );
 }
@@ -58,15 +58,15 @@ const AcvBtnWrapper = styled.button`
 `;
 
 const DeactivateText = styled.p`
-  ${({ theme }) => theme.fonts.Field};
+  ${({ theme }) => theme.fonts.Footer};
 
-  color: #8c8c8c;
+  color: #3f3e3e;
 `;
 
 const ActivateText = styled.p`
-  ${({ theme }) => theme.fonts.Field};
+  ${({ theme }) => theme.fonts.Footer};
 
-  color: white;
+  color: black;
 `;
 
 const FooterLocationIcon = styled(FooterLocationIc)`

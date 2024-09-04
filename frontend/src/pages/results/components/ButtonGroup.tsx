@@ -5,7 +5,7 @@ export default function ButtonGroup() {
   const navigate = useNavigate();
   return (
     <Container>
-      <Btn type="button" onClick={() => navigate("/results-all")}>
+      <Btn type="button" onClick={() => navigate("/results/all")}>
         전체 검색 결과보러가기
       </Btn>
       <InstructionText>내 물건이 없다면 키워드 알림 설정을 추천드려요</InstructionText>

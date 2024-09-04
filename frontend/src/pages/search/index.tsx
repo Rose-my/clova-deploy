@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
+import * as S from "./styles";
 import NoticeText from "./components/NoticeText";
 import Footer from "./components/Footer";
 import InputFields from "./components/InputFields";
@@ -26,7 +26,7 @@ export default function index() {
   };
 
   return (
-    <Container>
+    <S.Container>
       <InputFields
         date={date}
         startHour={startHour}
@@ -37,17 +37,6 @@ export default function index() {
       <Guide handleGuidelineClick={handleGuidelineClick} ifGuideClicked={ifGuideClicked} />
       {ifGuideClicked && <NoticeText />}
       <Footer />
-    </Container>
+    </S.Container>
   );
 }
-
-const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: 100dvh;
-
-  /* padding: 4rem 2rem; */
-  background-color: #f9f9f9;
-`;
