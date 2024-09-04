@@ -8,6 +8,14 @@ const useSetScreenSize = () => {
     document.documentElement.style.setProperty("--app-max-width", `${maxWidth}px`);
   };
 
+  function adjustHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+
+  window.addEventListener("resize", adjustHeight);
+  window.addEventListener("load", adjustHeight);
+
   useEffect(() => {
     setScreenSize();
     window.addEventListener("resize", setScreenSize);
