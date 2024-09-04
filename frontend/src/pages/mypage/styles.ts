@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100dvh;
+  height: calc(var(--vh, 1vh) * 100);
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.main_bg};
 `;
