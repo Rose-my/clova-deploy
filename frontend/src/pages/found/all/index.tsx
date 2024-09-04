@@ -1,7 +1,7 @@
 import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
-import Footer from "@pages/search/components/Footer";
 import * as A from "./styles";
 
 export default function index() {
@@ -9,8 +9,7 @@ export default function index() {
 
   return (
     <A.Container>
-      <Header title="검색결과" url="/search" />
-      <A.Text>검색 결과를 모두 보여드려요.</A.Text>
+      <Header />
       <A.FullItems>
         {LOSTITEMS.map((item) => (
           <A.Item type="button" key={item.id} onClick={() => navigate("/found/one")}>
@@ -26,6 +25,9 @@ export default function index() {
           </A.Item>
         ))}
       </A.FullItems>
+      <A.BtnWrapper type="button" onClick={() => navigate("/upload")}>
+        <A.PlusIcon />
+      </A.BtnWrapper>
       <Footer />
     </A.Container>
   );

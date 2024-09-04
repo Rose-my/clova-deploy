@@ -17,7 +17,7 @@ export default function InputFields(props: Props) {
   const isFormValid = date && startHour && endHour && location;
 
   const handleSearchClick = () => {
-    navigate("/results-top");
+    navigate("/results/top");
   };
 
   return (
