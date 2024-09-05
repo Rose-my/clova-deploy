@@ -173,6 +173,14 @@ a{
   text-decoration: none;
 }
 
+:root {
+  --vh: 100%;
+}
+
+html, body{
+  overflow-x :  hidden;
+}
+
 html {
 @font-face {
   font-family: Sunflower, sans-serif;
