@@ -41,10 +41,10 @@ const Container = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 0.2rem 0 2rem;
+  padding: 0.8rem 0 2rem;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 

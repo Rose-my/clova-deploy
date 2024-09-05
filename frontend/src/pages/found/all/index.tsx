@@ -3,14 +3,16 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import * as A from "./styles";
+import { useState } from "react";
 
 export default function index() {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   return (
     <A.Container>
-      <Header />
-      <A.FullItems>
+      <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
+      <A.FullItems $isScrolled={isScrolled}>
         {LOSTITEMS.map((item) => (
           <A.Item type="button" key={item.id} onClick={() => navigate("/found/one")}>
             <A.Image src={item.img} alt={`Lost Item ${item.id}`} />
