@@ -44,7 +44,7 @@ const Container = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 0.2rem 0 2rem;
+  padding: 0.2rem 0 4rem;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
