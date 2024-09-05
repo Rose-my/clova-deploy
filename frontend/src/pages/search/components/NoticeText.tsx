@@ -34,6 +34,4 @@ const Text = styled.span`
   padding: 0 2rem 1.5rem;
   font-size: 1rem;
   ${({ theme }) => theme.fonts.Field};
-
-  overflow-y: scroll;
 `;
