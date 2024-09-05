@@ -12,7 +12,7 @@ export const Container = styled.section`
 `;
 
 export const BackIcon = styled(BackIc)`
-  position: absolute;
+  position: fixed;
   top: 2rem;
   left: 2rem;
   width: 2.4rem;
