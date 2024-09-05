@@ -6,7 +6,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: #f9f9f9;
 `;
 
