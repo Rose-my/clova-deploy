@@ -16,7 +16,6 @@ export const FullItems = styled.div`
   flex: 1 1 auto; /* Allow the FullItems section to take up remaining space */
   width: 100%;
   padding-bottom: 8rem; /* Extra padding for content above footer */
-  overflow-y: auto; /* Make only this section scrollable */
 `;
 
 export const Image = styled.img`
