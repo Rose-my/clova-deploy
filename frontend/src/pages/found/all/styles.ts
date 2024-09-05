@@ -6,16 +6,17 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
 export const FullItems = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  flex: 1 1 auto; /* Allow the FullItems section to take up remaining space */
   width: 100%;
-  padding: 0 0 8rem;
+  padding-bottom: 8rem; /* Extra padding for content above footer */
+  overflow-y: auto; /* Make only this section scrollable */
 `;
 
 export const Image = styled.img`
