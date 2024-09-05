@@ -173,12 +173,6 @@ a{
   text-decoration: none;
 }
 
-html, body {
-  overscroll-behavior: none;
-  overflow: hidden;
-  height: 100dvh;
-}
-
 html {
 @font-face {
   font-family: Sunflower, sans-serif;

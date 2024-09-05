@@ -6,7 +6,7 @@ export const Container = styled.section`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100dvh
   padding: 2rem;
   background-color: white;
 `;

@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-items: center;
   position: relative;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100dvh
   background-color: #f9f9f9;
 `;
 

@@ -5,7 +5,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100dvh
   padding: 1rem;
   background-color: #f9f9f9;
 `;

@@ -7,7 +7,7 @@ export const Container = styled.div`
   gap: 2rem;
   align-items: center;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100dvh;
 `;
 
 export const LogoContainer = styled.section`
