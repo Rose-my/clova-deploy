@@ -55,13 +55,3 @@ const Title = styled.h1<{ $isScrolled: boolean }>`
     font-size 0.3s ease,
     color 0.3s ease;
 `;
-
-const Subtitle = styled.p`
-  ${({ theme }) => theme.fonts.Field};
-
-  font-size: 1.4rem;
-  opacity: 1;
-  transition:
-    font-size 0.3s ease,
-    opacity 0.3s ease;
-`;
