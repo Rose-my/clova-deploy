@@ -1,17 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import * as M from "./styles";
-import Header from "./components/Header";
-import { useState } from "react";
+import Title from "./components/Title";
 
 export default function index() {
   const navigate = useNavigate();
-  const [isScrolled, setIsScrolled] = useState(false);
 
   return (
     <M.Container>
-      <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
-      <M.ProfileSection $isScrolled={isScrolled}>
+      <Title />
+      <M.ProfileSection>
         <M.ProfileIcon />
         <M.Contents>
           <M.Nickname>망고주스</M.Nickname>

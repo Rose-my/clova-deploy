@@ -10,13 +10,12 @@ export const Container = styled.section`
   background-color: #f9f9f9;
 `;
 
-export const ProfileSection = styled.div<{ $isScrolled: boolean }>`
+export const ProfileSection = styled.div`
   display: flex;
   gap: 1.6rem;
   align-items: center;
   width: 315px;
   margin-top: 2rem;
-  margin-top: ${({ $isScrolled }) => ($isScrolled ? "8rem" : "8rem")};
   padding: 1.8rem 1.5rem;
   border-radius: 20px;
   background: #fff;
