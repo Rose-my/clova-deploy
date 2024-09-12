@@ -1,15 +1,15 @@
 import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
 import Footer from "@pages/mypage/components/Footer";
-import Header from "@pages/mypage/components/SubHeader";
 import * as A from "./styles";
+import SubHeader from "@pages/mypage/components/SubHeader";
 
 export default function index() {
   const navigate = useNavigate();
 
   return (
     <A.Container>
-      <Header title="등록 물품" url="/mypage" />
+      <SubHeader title="등록 물품" url="/mypage" />
       <A.FullItems>
         {LOSTITEMS.map((item) => (
           <A.Item type="button" key={item.id} onClick={() => navigate("/found/one")}>

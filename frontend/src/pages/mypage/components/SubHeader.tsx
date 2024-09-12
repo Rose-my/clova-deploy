@@ -25,9 +25,10 @@ const Container = styled.div`
   display: flex;
   gap: 2rem;
   justify-content: center;
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 4rem 2rem 3.5rem;
+  background-color: ${({ theme }) => theme.colors.main_bg};
 `;
 
 const Title = styled.p`
