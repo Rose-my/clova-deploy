@@ -11,20 +11,6 @@ export const Container = styled.section`
   background-color: white;
 `;
 
-export const ImageUploadContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-export const InstructionText = styled.p`
-  margin-top: 1rem;
-  color: #555;
-  font-size: 1.2rem;
-  text-align: center;
-`;
-
 export const NotiText = styled.p`
   padding: 0.8rem 0 1rem;
   color: red;
@@ -40,7 +26,6 @@ export const OptionText = styled.p`
 `;
 
 export const Form = styled.div`
-  overflow: scroll;
   width: 100%;
   max-width: 400px;
 `;
@@ -112,26 +97,4 @@ export const FooterText = styled.p`
   color: #666;
   font-size: 1rem;
   text-align: center;
-`;
-
-export const ProfileUploadBtn = styled.button`
-  overflow: hidden;
-  position: relative;
-  width: 170px;
-  height: 170px;
-  border: 2px dashed #ccc;
-  border-radius: 5px;
-  background-color: #e9ecef;
-  cursor: pointer;
-
-  & > input {
-    display: none;
-  }
-`;
-
-export const Profile = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 `;

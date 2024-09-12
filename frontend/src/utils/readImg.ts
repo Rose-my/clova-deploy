@@ -12,7 +12,7 @@ export const readImg = ({ input, setUrl, setVerified }: readImgProps) => {
     // reader가 이미지 읽도록 하기
     reader.readAsDataURL(input[0]);
     setUrl(input[0]);
-    setVerified(false);
+    setVerified(true);
 
     // 이미지가 로드가 된 경우
     reader.onload = (e) => {

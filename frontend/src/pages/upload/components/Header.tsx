@@ -6,16 +6,19 @@ import styled from "styled-components";
 interface Props {
   title: string;
   url: string;
+  isMyPage?: boolean;
 }
 
 export default function Header(props: Props) {
-  const { title, url } = props;
+  const { title, url, isMyPage } = props;
   const navigate = useNavigate();
   return (
     <Container>
-      <BtnWrapper type="button" onClick={() => navigate(`${url}`)}>
-        <BackIcon />
-      </BtnWrapper>
+      {!isMyPage && (
+        <BtnWrapper type="button" onClick={() => navigate(`${url}`)}>
+          <BackIcon />
+        </BtnWrapper>
+      )}
       <Title>{title}</Title>
     </Container>
   );
@@ -25,9 +28,12 @@ const Container = styled.div`
   display: flex;
   gap: 2rem;
   justify-content: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   padding: 4rem 2rem 3.5rem;
+  background-color: white;
 `;
 
 const Title = styled.p`
@@ -42,7 +48,7 @@ const Title = styled.p`
 const BackIcon = styled(BackIc)`
   position: absolute;
   top: 4rem;
-  left: 1rem;
+  left: 2rem;
   width: 2.4rem;
   height: 2.4rem;
 `;
