@@ -24,7 +24,7 @@ export default function Header(props: Props) {
   return (
     <Container $isScrolled={isScrolled}>
       <Wrapper $isScrolled={isScrolled}>
-        <Title $isScrolled={isScrolled}>검색하기</Title>
+        <Title $isScrolled={isScrolled}>분실물 찾기</Title>
       </Wrapper>
     </Container>
   );
