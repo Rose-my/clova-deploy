@@ -31,7 +31,8 @@ const Text = styled.span`
   display: block;
   justify-content: flex-start;
   margin-top: 1rem;
-  padding: 0 2rem 1.5rem;
+  padding: 0 2rem 10rem;
+  background-color: #f9f9f9;
   font-size: 1rem;
   ${({ theme }) => theme.fonts.Field};
 `;

@@ -8,10 +8,11 @@ interface Props {
   endHour: string;
   location: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  isScrolled: boolean;
 }
 
 export default function InputFields(props: Props) {
-  const { date, startHour, endHour, location, handleInputChange } = props;
+  const { date, startHour, endHour, location, handleInputChange, isScrolled } = props;
   const navigate = useNavigate();
 
   const isFormValid = date && startHour && endHour && location;
@@ -21,8 +22,8 @@ export default function InputFields(props: Props) {
   };
 
   return (
-    <Container>
-      <SearchIcon />
+    <Container $isScrolled={isScrolled}>
+      <SearchIcon $isScrolled={isScrolled} />
       <SearchField type="text" placeholder="찾고 싶은 물건에 대해 설명해주세요." />
       <Field>
         <Title>분실 시간</Title>
@@ -67,17 +68,20 @@ export default function InputFields(props: Props) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $isScrolled: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   position: relative;
-  padding: 4rem 2rem 3rem;
+
+  /* padding: 4rem 2rem 3rem; */
+  padding: ${({ $isScrolled }) => ($isScrolled ? "12rem 2rem 3rem" : "8rem 2rem 3rem")};
+  background-color: #f9f9f9;
 `;
 
-const SearchIcon = styled(SearchIc)`
+const SearchIcon = styled(SearchIc)<{ $isScrolled: boolean }>`
   position: absolute;
-  top: 6rem;
+  top: ${({ $isScrolled }) => ($isScrolled ? "14rem" : "10rem")};
   left: 4rem;
   width: 2.4rem;
   height: 2.4rem;
