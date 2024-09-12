@@ -2,6 +2,7 @@ import PencilIc from "./icon/pencil.svg?react";
 
 import LogoTxtIc from "./icon/logo.svg?react";
 import LogoIc from "./icon/logoIc.svg?react";
+import PointLogoIc from "./icon/pointLogoIc.svg?react";
 
 import BackIc from "./icon/backIc.svg?react";
 
@@ -16,6 +17,9 @@ import NoticeUpIc from "./icon/noticeUpIc.svg?react";
 import FooterLocationIc from "./icon/footerLocationIc.svg?react";
 import FooterMyIc from "./icon/footerMyIc.svg?react";
 import FooterSearchIc from "./icon/footerSearchIc.svg?react";
+import ActvFooterLocationIc from "./icon/actvFooterLocationIc.svg?react";
+import ActvFooterMyIc from "./icon/actvFooterMyIc.svg?react";
+import ActvFooterSearchIc from "./icon/actvFooterSearchIc.svg?react";
 
 import ProfileIc from "./icon/profileIc.svg?react";
 
@@ -49,4 +53,8 @@ export {
   PlusIc,
   LeftArrowIc,
   RightArrowIc,
+  ActvFooterLocationIc,
+  ActvFooterMyIc,
+  ActvFooterSearchIc,
+  PointLogoIc,
 };

@@ -5,13 +5,12 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
-  padding: 1rem;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
 export const NoNotiMessage = styled.p`
-  padding: 10rem 2rem 0;
+  padding: 20rem 2rem 0;
   color: #6c757d;
   font-size: 1.2rem;
   text-align: center;

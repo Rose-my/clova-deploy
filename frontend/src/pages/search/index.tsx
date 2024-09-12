@@ -4,6 +4,7 @@ import NoticeText from "./components/NoticeText";
 import Footer from "./components/Footer";
 import InputFields from "./components/InputFields";
 import Guide from "./components/Guide";
+import Header from "./components/Header";
 
 export default function index() {
   const [ifGuideClicked, setIfGuideClicked] = useState(false);
@@ -11,6 +12,7 @@ export default function index() {
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
   const [location, setLocation] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleGuidelineClick = () => {
     setIfGuideClicked(!ifGuideClicked);
@@ -27,12 +29,14 @@ export default function index() {
 
   return (
     <S.Container>
+      <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
       <InputFields
         date={date}
         startHour={startHour}
         endHour={endHour}
         location={location}
         handleInputChange={handleInputChange}
+        isScrolled={isScrolled}
       />
       <Guide handleGuidelineClick={handleGuidelineClick} ifGuideClicked={ifGuideClicked} />
       {ifGuideClicked && <NoticeText />}

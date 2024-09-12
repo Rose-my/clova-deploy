@@ -6,16 +6,17 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
-export const FullItems = styled.div`
+export const FullItems = styled.div<{ $isScrolled: boolean }>`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  flex: 1 1 auto;
   width: 100%;
-  padding: 0 0 8rem;
+  padding: ${({ $isScrolled }) => ($isScrolled ? "8rem 0" : "12rem 0")};
+  background-color: #f9f9f9;
 `;
 
 export const Image = styled.img`
@@ -73,7 +74,7 @@ export const BtnWrapper = styled.button`
   display: inline-flex;
   gap: 10px;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
   right: 2rem;
   bottom: 10rem;
   padding: 1.2rem;

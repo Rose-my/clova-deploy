@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as P from "./styles";
-import Header from "../components/Header";
+import Header from "../components/SubHeader";
 import Footer from "../components/Footer";
 import PRODUCTS from "@core/productsData";
 

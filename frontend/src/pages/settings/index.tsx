@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import useSetScreenSize from "@hooks/useSetScreenSize";
+import { useSetScreenSize } from "@hooks/useSetScreenSize";
 
 const Settings = () => {
   //useSetInterceptors();

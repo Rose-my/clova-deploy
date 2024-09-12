@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Header from "../components/SubHeader";
 import * as K from "./styles";
 
 export default function index() {
