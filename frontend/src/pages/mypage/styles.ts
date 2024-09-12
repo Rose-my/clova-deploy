@@ -7,14 +7,15 @@ export const Container = styled.section`
   align-items: center;
   width: 100%;
   height: 100vh;
+  padding: 0 1.6rem;
   background-color: #f9f9f9;
 `;
 
 export const ProfileSection = styled.div`
   display: flex;
   gap: 1.6rem;
-  width: 315px;
-  margin-top: 2rem;
+  width: 100%;
+  margin-top: 12rem;
   padding: 1.8rem 1.5rem;
   border-radius: 20px;
   background: #fff;
@@ -78,18 +79,17 @@ export const Menu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.7rem;
-
-  /* overflow: scroll; */
   width: 100%;
-  max-width: 400px;
   margin-top: 5rem;
-  padding: 0 4.2rem 10rem;
+  padding: 0 0 10rem;
+  background-color: #f9f9f9;
 `;
 
 export const MenuItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   padding: 0.8rem 1.5rem;
   border-radius: 12px;
   background-color: #fff;

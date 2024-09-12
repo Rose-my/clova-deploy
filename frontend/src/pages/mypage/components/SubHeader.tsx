@@ -6,16 +6,19 @@ import styled from "styled-components";
 interface Props {
   title: string;
   url: string;
+  isMyPage?: boolean;
 }
 
 export default function SubHeader(props: Props) {
-  const { title, url } = props;
+  const { title, url, isMyPage } = props;
   const navigate = useNavigate();
   return (
     <Container>
-      <BtnWrapper type="button" onClick={() => navigate(`${url}`)}>
-        <BackIcon />
-      </BtnWrapper>
+      {!isMyPage && (
+        <BtnWrapper type="button" onClick={() => navigate(`${url}`)}>
+          <BackIcon />
+        </BtnWrapper>
+      )}
       <Title>{title}</Title>
     </Container>
   );

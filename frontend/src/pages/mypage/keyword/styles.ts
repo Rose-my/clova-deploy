@@ -14,7 +14,7 @@ export const InputContainer = styled.div`
   width: 100%;
   max-width: 400px;
   margin: 20px 0;
-  padding: 10rem 2rem 0;
+  padding: 10rem 1.6rem 0;
 `;
 
 export const Input = styled.input`

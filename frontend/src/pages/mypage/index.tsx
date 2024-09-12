@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import * as M from "./styles";
-import Title from "./components/Title";
+import SubHeader from "./components/SubHeader";
 
 export default function index() {
   const navigate = useNavigate();
+  const isMypage = true;
 
   return (
     <M.Container>
-      <Title />
+      <SubHeader title="마이페이지" url="/mypage" isMyPage={isMypage} />
       <M.ProfileSection>
         <M.ProfileIcon />
         <M.Contents>
