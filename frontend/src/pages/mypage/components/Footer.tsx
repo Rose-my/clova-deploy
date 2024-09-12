@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { FooterLocationIc, FooterMyIc, FooterSearchIc } from "assets/index";
-import { BtnWrapper } from "@styles/commonStyle";
 import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
@@ -21,14 +20,14 @@ export default function Footer() {
 
   return (
     <Container>
-      <BtnWrapper type="button" onClick={moveToPosts}>
+      <DeAcvBtnWrapper type="button" onClick={moveToPosts}>
         <FooterLocationIcon />
-        <DeactivateText>습득물 모아보기</DeactivateText>
-      </BtnWrapper>
-      <BtnWrapper type="button" onClick={moveToExplore}>
+        <DeactivateText>습득물</DeactivateText>
+      </DeAcvBtnWrapper>
+      <DeAcvBtnWrapper type="button" onClick={moveToExplore}>
         <FooterSearchIcon />
         <DeactivateText>검색하기</DeactivateText>
-      </BtnWrapper>
+      </DeAcvBtnWrapper>
       <AcvBtnWrapper type="button" onClick={moveToMypage}>
         <FooterMyIcon />
         <ActivateText>마이페이지</ActivateText>
@@ -49,11 +48,19 @@ const Container = styled.div`
 `;
 
 const AcvBtnWrapper = styled.button`
+  padding: 0;
   padding: 0 1rem;
   border: none;
   border-radius: 10px;
   background: none;
   background-color: rgb(25 122 58 / 50%);
+  cursor: pointer;
+`;
+
+const DeAcvBtnWrapper = styled.button`
+  padding: 0 1rem;
+  border: none;
+  background: none;
   cursor: pointer;
 `;
 

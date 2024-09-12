@@ -24,7 +24,7 @@ export default function Header(props: Props) {
   return (
     <Container $isScrolled={isScrolled}>
       <Wrapper $isScrolled={isScrolled}>
-        <Title $isScrolled={isScrolled}>습득물</Title>
+        <Title $isScrolled={isScrolled}>습득물 모아보기</Title>
       </Wrapper>
       {!isScrolled && <Subtitle>습득 물품입니다.</Subtitle>}
     </Container>
