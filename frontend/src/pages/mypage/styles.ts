@@ -13,7 +13,6 @@ export const Container = styled.section`
 export const ProfileSection = styled.div`
   display: flex;
   gap: 1.6rem;
-  align-items: center;
   width: 315px;
   margin-top: 2rem;
   padding: 1.8rem 1.5rem;
