@@ -100,6 +100,9 @@ export default function InputField(props: Props) {
 }
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   padding: 10rem 0 4rem;
 `;

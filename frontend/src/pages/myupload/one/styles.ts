@@ -7,7 +7,7 @@ export const Container = styled.section`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
@@ -21,7 +21,7 @@ export const BackIcon = styled(BackIc)`
 
 export const Image = styled.img`
   width: 100%;
-  height: 35rem;
+  height: 28rem;
   object-fit: cover;
   object-position: center;
 `;

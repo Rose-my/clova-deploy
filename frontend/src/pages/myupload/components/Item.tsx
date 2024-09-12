@@ -52,10 +52,10 @@ export default function Item() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
   width: 100%;
   margin-top: 2.2rem;
   padding: 0 2rem 10rem;
+  background-color: #f9f9f9;
 `;
 
 const Details = styled.div`
