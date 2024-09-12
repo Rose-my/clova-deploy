@@ -23,7 +23,7 @@ export default function Footer() {
     <Container>
       <AcvBtnWrapper type="button" onClick={moveToPosts}>
         <FooterLocationIcon />
-        <ActivateText>분실물 찾기</ActivateText>
+        <ActivateText>습득물 모아보기</ActivateText>
       </AcvBtnWrapper>
       <BtnWrapper type="button" onClick={moveToExplore}>
         <FooterSearchIcon />
