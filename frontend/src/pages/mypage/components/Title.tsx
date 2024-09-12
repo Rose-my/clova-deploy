@@ -16,11 +16,10 @@ const Container = styled.div`
   padding: 4rem 1.6rem 0;
 `;
 
-const Text = styled.p`
+const Text = styled.h1`
   ${({ theme }) => theme.fonts.Field};
 
   color: black;
   font-size: 2rem;
-  font-weight: 600;
   text-align: center;
 `;

@@ -2,6 +2,7 @@ import PencilIc from "./icon/pencil.svg?react";
 
 import LogoTxtIc from "./icon/logo.svg?react";
 import LogoIc from "./icon/logoIc.svg?react";
+import PointLogoIc from "./icon/pointLogoIc.svg?react";
 
 import BackIc from "./icon/backIc.svg?react";
 
@@ -55,4 +56,5 @@ export {
   ActvFooterLocationIc,
   ActvFooterMyIc,
   ActvFooterSearchIc,
+  PointLogoIc,
 };

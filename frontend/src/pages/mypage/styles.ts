@@ -1,28 +1,66 @@
 import styled from "styled-components";
-import { MoveArrowIc, ProfileIc } from "@assets/index";
+import { MoveArrowIc, ProfileIc, EwhaPointIc, EmartPointIc } from "@assets/index";
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 100%;
-  height: 100dvh;
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.main_bg};
+  height: 100vh;
+  background-color: #f9f9f9;
 `;
 
-export const ProfileSection = styled.div`
+export const ProfileSection = styled.div<{ $isScrolled: boolean }>`
   display: flex;
-  flex-direction: column;
+  gap: 1.6rem;
   align-items: center;
+  width: 315px;
   margin-top: 2rem;
+  margin-top: ${({ $isScrolled }) => ($isScrolled ? "8rem" : "8rem")};
+  padding: 1.8rem 1.5rem;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 10px 40px 0 rgb(0 0 0 / 3%);
 `;
 
 export const ProfileIcon = styled(ProfileIc)`
   width: 8rem;
   height: 8rem;
   margin-bottom: 1rem;
+`;
+
+export const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PointBox = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin-top: 1.8rem;
+`;
+
+export const PointText = styled.p`
+  font-family: Pretendard;
+  color: #197a3a;
+  font-style: normal;
+  font-size: 1.8rem;
+  font-weight: 800;
+`;
+
+export const PointShopBox = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.8rem;
+`;
+
+export const PointShopText = styled.p`
+  color: black;
+  font-size: 1.8rem;
+  font-weight: 400;
 `;
 
 export const Nickname = styled.h2`
@@ -41,19 +79,20 @@ export const Id = styled.p`
 export const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  gap: 2.7rem;
+
+  /* overflow: scroll; */
   width: 100%;
   max-width: 400px;
-  margin-top: 2rem;
-  padding: 0 0 8rem;
+  margin-top: 5rem;
+  padding: 0 4.2rem 10rem;
 `;
 
 export const MenuItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
@@ -96,4 +135,14 @@ export const Button = styled.button`
 export const MoveArrowIcon = styled(MoveArrowIc)`
   width: 2.4rem;
   height: 2.4rem;
+`;
+
+export const EwhaPointIcon = styled(EwhaPointIc)`
+  width: 3.2rem;
+  height: 3.2rem;
+`;
+
+export const EmartPointIcon = styled(EmartPointIc)`
+  width: 3.2rem;
+  height: 3.2rem;
 `;

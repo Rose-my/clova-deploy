@@ -1,7 +1,7 @@
 import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
 import Footer from "@pages/mypage/components/Footer";
-import Header from "@pages/mypage/components/Header";
+import Header from "@pages/mypage/components/SubHeader";
 import * as A from "./styles";
 
 export default function index() {
