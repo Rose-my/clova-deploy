@@ -21,7 +21,7 @@ export const BackIcon = styled(BackIc)`
 
 export const Image = styled.img`
   width: 100%;
-  height: 28rem;
+  height: 35rem;
   object-fit: cover;
   object-position: center;
 `;
