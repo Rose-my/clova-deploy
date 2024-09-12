@@ -5,8 +5,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
-  padding: 1rem;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
@@ -15,7 +14,7 @@ export const InputContainer = styled.div`
   width: 100%;
   max-width: 400px;
   margin: 20px 0;
-  padding: 0 2rem;
+  padding: 10rem 1.6rem 0;
 `;
 
 export const Input = styled.input`

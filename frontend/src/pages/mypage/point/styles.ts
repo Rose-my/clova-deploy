@@ -4,13 +4,10 @@ import { EmartPointIc, EwhaPointIc } from "@assets/index";
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  position: relative;
   width: 100%;
-  height: 100dvh;
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.main_bg};
+  height: 100vh;
+  background-color: #f9f9f9;
 `;
 
 export const SearchContainer = styled.div`
@@ -18,7 +15,7 @@ export const SearchContainer = styled.div`
   width: 100%;
   max-width: 400px;
   margin: 20px 0;
-  padding: 0 2rem;
+  padding: 10rem 2rem 0;
 `;
 
 export const SearchInput = styled.input`
@@ -79,10 +76,10 @@ export const StoreButton = styled.button`
 `;
 
 export const ProductList = styled.div`
-  overflow: scroll;
   width: 100%;
   max-width: 400px;
   padding: 0 2rem 7rem;
+  background-color: #f9f9f9;
 `;
 
 export const ProductItem = styled.div`

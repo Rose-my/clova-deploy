@@ -1,48 +1,57 @@
-import { BackIc } from "@assets/index";
-import { BtnWrapper } from "@styles/commonStyle";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 interface Props {
-  title: string;
-  url: string;
+  isScrolled: boolean;
+  setIsScrolled: (scroll: boolean) => void;
 }
 
 export default function Header(props: Props) {
-  const { title, url } = props;
-  const navigate = useNavigate();
+  const { isScrolled, setIsScrolled } = props;
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <Container>
-      <BtnWrapper type="button" onClick={() => navigate(`${url}`)}>
-        <BackIcon />
-      </BtnWrapper>
-      <Title>{title}</Title>
+    <Container $isScrolled={isScrolled}>
+      <Wrapper $isScrolled={isScrolled}>
+        <Title $isScrolled={isScrolled}>{isScrolled ? "망고주스 님" : "마이페이지"}</Title>
+      </Wrapper>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $isScrolled: boolean }>`
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  justify-content: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   width: 100%;
-  padding: 4rem 2rem 3.5rem;
+  padding: ${({ $isScrolled }) => ($isScrolled ? "2rem 1.6rem" : "4rem 1.6rem 1rem")};
+  background-color: ${({ theme }) => theme.colors.main_bg};
+  box-shadow: ${({ $isScrolled }) => ($isScrolled ? "0 2px 8px rgba(0, 0, 0, 0.2)" : "none")};
+  transition: all 0.3s ease;
 `;
 
-const Title = styled.p`
-  ${({ theme }) => theme.fonts.Field};
-
-  color: black;
-  font-size: 2rem;
-  font-weight: 600;
-  text-align: center;
+const Wrapper = styled.div<{ $isScrolled: boolean }>`
+  display: flex;
+  justify-content: ${({ $isScrolled }) => ($isScrolled ? "none" : "center")};
 `;
 
-const BackIcon = styled(BackIc)`
-  position: absolute;
-  top: 4rem;
-  left: 2rem;
-  width: 2.4rem;
-  height: 2.4rem;
+const Title = styled.h1<{ $isScrolled: boolean }>`
+  font-size: ${({ $isScrolled }) => ($isScrolled ? "1.8rem" : "2rem")};
+  transition:
+    font-size 0.3s ease,
+    color 0.3s ease;
 `;
