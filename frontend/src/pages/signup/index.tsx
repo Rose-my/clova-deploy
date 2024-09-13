@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CustomCheckbox from "./components/CustomCheckbox";
 import * as S from "./styles";
+import Header from "./components/Header";
 
 export default function index() {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
   const [password, setPassword] = useState("");
@@ -59,21 +61,18 @@ export default function index() {
   };
 
   return (
-    <S.Container>
-      <S.BackBtn type="button" onClick={moveToLogin}>
-        <S.BackIcon />
-      </S.BackBtn>
-      <S.LogoContainer>
-        <S.LogoTxtIcon />
-      </S.LogoContainer>
+    <S.Container $showCodeInput={showCodeInput}>
+      <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
       <S.SignupFields>
-        <S.FieldText>아이디</S.FieldText>
-        <S.IdBox>
-          <S.IdField type="text" placeholder="아이디" />
-          <S.DomainText>@ewha.ac.kr</S.DomainText>
+        <S.IdHeader>
+          <S.FieldText>아이디</S.FieldText>
           <S.SendCodeBtn type="button" onClick={handleSendCode}>
             인증코드 보내기
           </S.SendCodeBtn>
+        </S.IdHeader>
+        <S.IdBox>
+          <S.IdField type="text" placeholder="아이디" />
+          <S.DomainText>@ewha.ac.kr</S.DomainText>
         </S.IdBox>
         {showCodeInput && (
           <div>
