@@ -19,10 +19,10 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
   flex: 1;
-  padding: 10px;
+  padding: 2.2rem 1.6rem 2.2rem 1rem;
   border: 2px solid #4caf50;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   outline: none;
   transition: border-color 0.3s ease;
 
@@ -38,7 +38,7 @@ export const Button = styled.button`
   border-radius: 8px;
   background-color: #4caf50;
   color: white;
-  font-size: 1rem;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 

@@ -17,6 +17,10 @@ export const LogoIcon = styled(LogoIc)`
   margin-bottom: 1.5rem;
 `;
 
+export const LogoTxt = styled.p`
+  ${({ theme }) => theme.fonts.LogoTxt};
+`;
+
 export const LogoTxtIcon = styled(LogoTxtIc)`
   width: 14.5rem;
   height: 4rem;

@@ -18,6 +18,10 @@ export const LogoContainer = styled.section`
   margin-top: 19.1rem;
 `;
 
+export const LogoTxt = styled.p`
+  ${({ theme }) => theme.fonts.LogoTxt};
+`;
+
 export const LogoTxtIcon = styled(LogoTxtIc)`
   width: 15rem;
   height: 3.9rem;

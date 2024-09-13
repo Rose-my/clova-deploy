@@ -14,7 +14,7 @@ export default function index() {
   return (
     <L.Container>
       <L.LogoIcon />
-      <L.LogoTxtIcon />
+      <L.LogoTxt>클로바</L.LogoTxt>
       <L.InputFields>
         <L.IdContainer>
           <L.Field type="text" placeholder="아이디" />
