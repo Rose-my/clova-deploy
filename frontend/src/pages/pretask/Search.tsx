@@ -1,17 +1,17 @@
-import { LOCATIONS, LocationTypes } from "@core/locationData";
+import LOCATIONS, { LocationsTypes } from "@core/locationData";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { PencilIc } from "assets";
 
 export default function Search() {
   const [searchInput, setSearchInput] = useState("");
-  const [filteredLocations, setFilteredLocations] = useState<LocationTypes[]>();
+  const [filteredLocations, setFilteredLocations] = useState<LocationsTypes[]>();
   const [location, setLocation] = useState("");
   const [locationDisplay, setLocationDisplay] = useState(true);
 
   useEffect(() => {
     setFilteredLocations(
-      LOCATIONS.filter((location) => location.location.toLowerCase().includes(searchInput.toLowerCase())),
+      LOCATIONS.filter((data: LocationsTypes) => data.loc.toLowerCase().includes(searchInput.toLowerCase())),
     );
   }, [searchInput]);
 
@@ -61,10 +61,10 @@ export default function Search() {
         {searchInput &&
           filteredLocations &&
           filteredLocations.map((data, index) => {
-            const { location } = data;
+            const { loc } = data;
             return (
-              <LocationBox key={index} type="button" onClick={() => handleSelectLocation(location)}>
-                <Name>{location}</Name>
+              <LocationBox key={index} type="button" onClick={() => handleSelectLocation(loc)}>
+                <Name>{loc}</Name>
               </LocationBox>
             );
           })}
