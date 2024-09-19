@@ -86,6 +86,7 @@ export const IdHeader = styled.div`
 
 export const IdField = styled.input`
   flex: 1;
+  width: 60%;
   padding: 0.8rem 1rem;
   border: 2px solid #ced4da;
   border-radius: 8px;

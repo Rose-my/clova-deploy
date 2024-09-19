@@ -38,7 +38,6 @@ export const InputFields = styled.div`
 
 export const IdContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
@@ -63,21 +62,17 @@ export const PwField = styled.input`
   }
 `;
 
-export const IdField = styled.textarea`
+export const IdField = styled.input`
   flex: 1;
+  width: 60%;
   ${({ theme }) => theme.fonts.Field};
 
-  max-width: 60%;
   padding: 0.85rem 0;
   border: none;
   border-bottom: 2px solid #ced4da;
   color: black;
   font-size: 1.5rem;
-  white-space: pre-wrap;
   transition: border-color 0.3s ease;
-  word-wrap: break-word;
-  resize: none;
-  overflow-wrap: break-word;
 
   &:focus {
     border-bottom-color: #495057;
@@ -94,6 +89,8 @@ export const IdField = styled.textarea`
 export const DomainText = styled.span`
   ${({ theme }) => theme.fonts.Field};
 
+  margin-left: 0.5rem;
+  color: #495057;
   font-size: 1.5rem;
 `;
 

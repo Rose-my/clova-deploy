@@ -17,7 +17,7 @@ export default function index() {
       <L.LogoTxt>클로바</L.LogoTxt>
       <L.InputFields>
         <L.IdContainer>
-          <L.IdField as="textarea" placeholder="아이디" />
+          <L.IdField type="text" placeholder="아이디" />
           <L.DomainText>@ewha.ac.kr</L.DomainText>
         </L.IdContainer>
         <L.PwField type="password" placeholder="비밀번호" />
