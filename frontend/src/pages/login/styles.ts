@@ -6,7 +6,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   padding: 0 1.5rem;
 `;
 
@@ -38,10 +38,11 @@ export const InputFields = styled.div`
 
 export const IdContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 
-export const Field = styled.input`
+export const PwField = styled.input`
   flex: 1;
   ${({ theme }) => theme.fonts.Field};
 
@@ -61,6 +62,34 @@ export const Field = styled.input`
     color: #adb5bd;
   }
 `;
+
+export const IdField = styled.textarea`
+  flex: 1;
+  ${({ theme }) => theme.fonts.Field};
+
+  max-width: 60%;
+  padding: 0.85rem 0;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  color: black;
+  font-size: 1.5rem;
+  white-space: pre-wrap;
+  transition: border-color 0.3s ease;
+  word-wrap: break-word;
+  resize: none;
+  overflow-wrap: break-word;
+
+  &:focus {
+    border-bottom-color: #495057;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #adb5bd;
+  }
+`;
+
+// left: 20rem;
 
 export const DomainText = styled.span`
   ${({ theme }) => theme.fonts.Field};
