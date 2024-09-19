@@ -31,6 +31,7 @@ export const Form = styled.div`
 `;
 
 export const FormGroup = styled.div`
+  position: relative;
   margin-bottom: 15px;
 `;
 
