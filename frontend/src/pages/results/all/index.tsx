@@ -31,9 +31,6 @@ export default function index() {
           </A.Item>
         ))}
       </A.FullItems>
-      <A.BtnWrapper type="button" onClick={() => navigate("/upload")}>
-        <A.PlusIcon />
-      </A.BtnWrapper>
     </A.Container>
   );
 }
