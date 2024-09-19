@@ -1,17 +1,22 @@
 import LOSTITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import Footer from "@pages/search/components/Footer";
 import * as A from "./styles";
+import { useState } from "react";
 
 export default function index() {
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
 
   return (
     <A.Container>
-      <Header title="검색결과" url="/search" />
-      <A.Text>검색 결과를 모두 보여드려요.</A.Text>
-      <A.FullItems>
+      <Header
+        subtitle="검색 결과를 모두 보여드려요"
+        isScrolled={isScrolled}
+        setIsScrolled={setIsScrolled}
+        url="/results/top"
+      />
+      <A.FullItems $isScrolled={isScrolled}>
         {LOSTITEMS.map((item) => (
           <A.Item type="button" key={item.id} onClick={() => navigate("/found/one")}>
             <A.Image src={item.img} alt={`Lost Item ${item.id}`} />
@@ -26,7 +31,9 @@ export default function index() {
           </A.Item>
         ))}
       </A.FullItems>
-      <Footer />
+      <A.BtnWrapper type="button" onClick={() => navigate("/upload")}>
+        <A.PlusIcon />
+      </A.BtnWrapper>
     </A.Container>
   );
 }

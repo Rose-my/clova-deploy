@@ -7,8 +7,8 @@ export const Container = styled.section`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100dvh;
-  padding: 2rem 1rem;
+  height: 100vh;
+  padding: 0 1rem 80rem;
   background-color: #f9f9f9;
 `;
 
@@ -23,12 +23,12 @@ export const Text = styled.div`
   font-weight: 400;
 `;
 
-export const Pagination = styled.div`
+export const Pagination = styled.div<{ $isScrolled: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 0 1rem;
+  padding: ${({ $isScrolled }) => ($isScrolled ? "8rem 0 1rem" : "14rem 0 1rem")};
 `;
 
 export const ArrowButton = styled.button`
@@ -61,10 +61,10 @@ export const LeftArrowIcon = styled(LeftArrowIc)`
 export const Item = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 1rem 1.4rem 0;
   border-radius: 10px;
-  background: #f0f0f0;
-  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
+  background: #f1f0f0;
+  box-shadow: 4px 4px 4px 4px rgb(0 0 0 / 25%);
 `;
 
 export const Image = styled.img`
@@ -73,7 +73,6 @@ export const Image = styled.img`
   margin-bottom: 1.5rem;
   border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 4px 4px 0 rgb(0 0 0 / 25%);
 `;
 
 export const Label = styled.p`
@@ -99,5 +98,5 @@ export const Details = styled.div`
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 0;
 `;
