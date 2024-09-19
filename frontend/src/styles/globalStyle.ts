@@ -173,12 +173,21 @@ a{
   text-decoration: none;
 }
 
-html {
+@font-face {
+  font-family: WavvePADO-Regular;
+  font-style: normal;
+  font-weight: normal;
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/WavvePADO-Regular.woff2') format('woff2');
+}
+
 @font-face {
   font-family: Sunflower, sans-serif;
   font-style: normal;
   src: url("https://fonts.googleapis.com/css2?family=Dokdo&family=Gaegu&family=Jua&family=Sunflower:wght@300&display=swap");
 }
+
+div, p, button, input, h1, h2, h3, h4{
+  font-family: WavvePADO-Regular;
 }
 
 /* 사파리 웹 뷰 브라우저 상속 스타일 제거 */

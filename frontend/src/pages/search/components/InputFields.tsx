@@ -29,24 +29,26 @@ export default function InputFields(props: Props) {
         <Title>분실 시간</Title>
         <TimeContainer>
           <DateInput type="text" name="date" placeholder="2024-08-08" value={date} onChange={handleInputChange} />
-          <TimeInput
-            type="text"
-            name="startHour"
-            value={startHour}
-            placeholder="14"
-            onChange={handleInputChange}
-            maxLength={2}
-          />
-          <TimeText>시 부터</TimeText>
-          <TimeInput
-            type="text"
-            name="endHour"
-            value={endHour}
-            placeholder="21"
-            onChange={handleInputChange}
-            maxLength={2}
-          />
-          <TimeText>시 사이</TimeText>
+          <TimeInputBox>
+            <TimeInput
+              type="text"
+              name="startHour"
+              value={startHour}
+              placeholder="14"
+              onChange={handleInputChange}
+              maxLength={2}
+            />
+            <TimeText>시 부터</TimeText>
+            <TimeInput
+              type="text"
+              name="endHour"
+              value={endHour}
+              placeholder="21"
+              onChange={handleInputChange}
+              maxLength={2}
+            />
+            <TimeText>시 사이</TimeText>
+          </TimeInputBox>
         </TimeContainer>
       </Field>
       <Field>
@@ -122,6 +124,11 @@ const TimeContainer = styled.div`
   display: flex;
   gap: 0.5rem;
   align-items: center;
+
+  @media (width <= 37.6rem) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const LocationContainer = styled.div`
@@ -145,6 +152,16 @@ const DateInput = styled.input`
   &::placeholder {
     color: #adb5bd;
   }
+
+  @media (width <= 37.6rem) {
+    width: 80%;
+  }
+`;
+
+const TimeInputBox = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 `;
 
 const TimeInput = styled.input`
@@ -163,6 +180,10 @@ const TimeInput = styled.input`
 
   &::placeholder {
     color: #adb5bd;
+  }
+
+  @media (width <= 37.6rem) {
+    width: 15%;
   }
 `;
 

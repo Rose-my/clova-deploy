@@ -41,7 +41,6 @@ export const PointBox = styled.div`
 `;
 
 export const PointText = styled.p`
-  font-family: Pretendard;
   color: #197a3a;
   font-style: normal;
   font-size: 1.8rem;

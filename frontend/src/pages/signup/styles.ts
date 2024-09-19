@@ -1,12 +1,22 @@
 import styled from "styled-components";
 import { BackIc, LogoTxtIc } from "@assets/index";
 
-export const Container = styled.section`
+export const Container = styled.section<{ $showCodeInput: boolean }>`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100dvh;
-  padding: 4rem 2rem;
+  height: 100vh;
+  padding: ${({ $showCodeInput }) => ($showCodeInput ? "4rem 2rem 80rem" : "4rem 2rem 60rem")};
+  background-color: #f9f9f9;
+`;
+// ----- 헤더
+export const HeaderContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  background-color: ${({ theme }) => theme.colors.main_bg};
 `;
 
 // ----- 뒤로가기버튼
@@ -37,12 +47,19 @@ export const LogoTxtIcon = styled(LogoTxtIc)`
   margin-bottom: 3rem;
 `;
 
+export const LogoTxt = styled.p`
+  ${({ theme }) => theme.fonts.LogoTxt};
+
+  margin-bottom: 1rem;
+`;
+
 // ----- 입력 필드
 export const SignupFields = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 50rem;
+  max-width: 43rem;
+  padding: 8rem 0 0;
 `;
 
 export const FieldText = styled.p`
@@ -61,12 +78,19 @@ export const IdBox = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+export const IdHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const IdField = styled.input`
   flex: 1;
-  padding: 0.75rem 1rem;
+  width: 60%;
+  padding: 0.8rem 1rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -120,10 +144,10 @@ export const CodeBox = styled.div`
 
 export const CodeField = styled.input`
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -155,10 +179,10 @@ export const PwBox = styled.div`
 `;
 
 export const PwField = styled.input`
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -173,10 +197,10 @@ export const PwField = styled.input`
 `;
 
 export const PwCheckField = styled.input<{ isValid: boolean }>`
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border: 2px solid ${({ isValid }) => (isValid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -203,10 +227,10 @@ export const NicknameBox = styled.div`
 `;
 
 export const NicknameField = styled.input`
-  padding: 0.75rem 1rem;
+  padding: 0.8rem 1rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
@@ -223,7 +247,7 @@ export const NicknameField = styled.input`
 export const Description = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.2rem;
   margin-top: 1.5rem;
 `;
 

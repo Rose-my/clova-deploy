@@ -17,7 +17,7 @@ export default function index() {
     <S.Container>
       <S.LogoContainer>
         <S.LogoIcon />
-        <S.LogoTxtIcon />
+        <S.LogoTxt>클로바</S.LogoTxt>
       </S.LogoContainer>
       <S.Text>클릭 한번에 바로 찾는 분실물</S.Text>
     </S.Container>
