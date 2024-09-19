@@ -13,6 +13,7 @@ export default function index() {
   const [endHour, setEndHour] = useState("");
   const [location, setLocation] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [locationDisplay, setLocationDisplay] = useState(true);
 
   const handleGuidelineClick = () => {
     setIfGuideClicked(!ifGuideClicked);
@@ -27,6 +28,19 @@ export default function index() {
     if (name === "location") setLocation(value);
   };
 
+  function handleClearBtn() {
+    setLocation("");
+  }
+
+  function handleSelectLocation(locationName?: string) {
+    if (locationName) {
+      setLocation(locationName);
+      setLocationDisplay(false);
+    }
+  }
+
+  console.log(location);
+
   return (
     <S.Container>
       <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
@@ -37,6 +51,9 @@ export default function index() {
         location={location}
         handleInputChange={handleInputChange}
         isScrolled={isScrolled}
+        handleClearBtn={handleClearBtn}
+        handleSelectLocation={handleSelectLocation}
+        locationDisplay={locationDisplay}
       />
       <Guide handleGuidelineClick={handleGuidelineClick} ifGuideClicked={ifGuideClicked} />
       {ifGuideClicked && <NoticeText />}
