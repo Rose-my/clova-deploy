@@ -1,6 +1,7 @@
-import { SearchIc } from "@assets/index";
+import { PencilIc, SearchIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import FilteredLocModal from "./FilteredLocModal";
 
 interface Props {
   date: string;
@@ -9,10 +10,28 @@ interface Props {
   location: string;
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   isScrolled: boolean;
+  handleClearBtn: () => void;
+  handleSelectLocation: (loc: string) => void;
+  modalDisplay: boolean;
+  clickLoc: string;
+  handleLocModify: () => void;
 }
 
 export default function InputFields(props: Props) {
-  const { date, startHour, endHour, location, handleInputChange, isScrolled } = props;
+  const {
+    date,
+    startHour,
+    endHour,
+    location,
+    handleInputChange,
+    isScrolled,
+    handleClearBtn,
+    handleSelectLocation,
+    modalDisplay,
+    clickLoc,
+    handleLocModify,
+  } = props;
+
   const navigate = useNavigate();
 
   const isFormValid = date && startHour && endHour && location;
@@ -53,19 +72,30 @@ export default function InputFields(props: Props) {
       </Field>
       <Field>
         <Title>분실 장소</Title>
-        <LocationContainer>
-          <LocationInput
-            type="text"
-            name="location"
-            value={location}
-            placeholder="물건을 잃어버린 건물을 알려주세요"
-            onChange={handleInputChange}
-          />
-        </LocationContainer>
+        {clickLoc ? (
+          <SearchResult>
+            <Text>{location}</Text>
+            <ModifyBtn onClick={handleLocModify}>
+              <PencilIcon />
+            </ModifyBtn>
+          </SearchResult>
+        ) : (
+          <LocationContainer>
+            <LocationInput
+              type="text"
+              name="location"
+              value={location}
+              placeholder="물건을 잃어버린 건물을 알려주세요"
+              onChange={handleInputChange}
+            />
+            {location && <ClearBtn onClick={handleClearBtn}>X</ClearBtn>}
+          </LocationContainer>
+        )}
       </Field>
       <SearchBtn type="button" onClick={handleSearchClick} disabled={!isFormValid}>
         검색하기
       </SearchBtn>
+      <FilteredLocModal modalDisplay={modalDisplay} location={location} handleSelectLocation={handleSelectLocation} />
     </Container>
   );
 }
@@ -133,6 +163,7 @@ const TimeContainer = styled.div`
 
 const LocationContainer = styled.div`
   display: flex;
+  position: relative;
 `;
 
 const DateInput = styled.input`
@@ -211,6 +242,23 @@ const LocationInput = styled.input`
   }
 `;
 
+const ClearBtn = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  padding: 2px;
+  border: none;
+  background: none;
+  color: #197a3a;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &:hover {
+    color: #0056b3;
+  }
+`;
+
 const SearchBtn = styled.button`
   margin-top: 1.5rem;
   padding: 1rem;
@@ -237,4 +285,40 @@ const SearchBtn = styled.button`
     background-color: #6c757d;
     cursor: not-allowed;
   }
+`;
+
+const SearchResult = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffe066;
+  color: #333;
+  font-size: 1.4rem;
+`;
+
+const ModifyBtn = styled.button`
+  border: none;
+  background: none;
+  color: #007bff;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const PencilIcon = styled(PencilIc)`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const Text = styled.p`
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
