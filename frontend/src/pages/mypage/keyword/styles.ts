@@ -12,14 +12,13 @@ export const Container = styled.section`
 export const InputContainer = styled.div`
   display: flex;
   width: 100%;
-  max-width: 400px;
   margin: 20px 0;
   padding: 10rem 1.6rem 0;
 `;
 
 export const Input = styled.input`
   flex: 1;
-  padding: 2.2rem 1.6rem 2.2rem 1rem;
+  padding: 1.8rem 1.6rem 1.8rem 1rem;
   border: 2px solid #4caf50;
   border-radius: 8px;
   font-size: 1.4rem;
