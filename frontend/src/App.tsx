@@ -7,7 +7,6 @@ import { RecoilRoot } from "recoil";
 import { createBrowserRouter } from "react-router-dom";
 import Settings from "@pages/settings";
 import Login from "@pages/login";
-import Pretask from "@pages/pretask";
 import Splash from "@pages/splash";
 import Signup from "@pages/signup";
 import Search from "@pages/search";
@@ -37,7 +36,6 @@ const Router = createBrowserRouter([
       { index: true, element: <Splash /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/pretask", element: <Pretask /> },
 
       /*---------검색-------*/
       { path: "/search", element: <Search /> },

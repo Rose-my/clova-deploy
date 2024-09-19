@@ -1,4 +1,4 @@
-import { SearchIc } from "@assets/index";
+import { PencilIc, SearchIc } from "@assets/index";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FilteredLocModal from "./FilteredLocModal";
@@ -13,6 +13,8 @@ interface Props {
   handleClearBtn: () => void;
   handleSelectLocation: (loc: string) => void;
   modalDisplay: boolean;
+  clickLoc: string;
+  handleLocModify: () => void;
 }
 
 export default function InputFields(props: Props) {
@@ -26,6 +28,8 @@ export default function InputFields(props: Props) {
     handleClearBtn,
     handleSelectLocation,
     modalDisplay,
+    clickLoc,
+    handleLocModify,
   } = props;
 
   const navigate = useNavigate();
@@ -68,16 +72,25 @@ export default function InputFields(props: Props) {
       </Field>
       <Field>
         <Title>분실 장소</Title>
-        <LocationContainer>
-          <LocationInput
-            type="text"
-            name="location"
-            value={location}
-            placeholder="물건을 잃어버린 건물을 알려주세요"
-            onChange={handleInputChange}
-          />
-          {location && <ClearBtn onClick={handleClearBtn}>X</ClearBtn>}
-        </LocationContainer>
+        {clickLoc ? (
+          <SearchResult>
+            <Text>{location}</Text>
+            <ModifyBtn onClick={handleLocModify}>
+              <PencilIcon />
+            </ModifyBtn>
+          </SearchResult>
+        ) : (
+          <LocationContainer>
+            <LocationInput
+              type="text"
+              name="location"
+              value={location}
+              placeholder="물건을 잃어버린 건물을 알려주세요"
+              onChange={handleInputChange}
+            />
+            {location && <ClearBtn onClick={handleClearBtn}>X</ClearBtn>}
+          </LocationContainer>
+        )}
       </Field>
       <SearchBtn type="button" onClick={handleSearchClick} disabled={!isFormValid}>
         검색하기
@@ -272,4 +285,40 @@ const SearchBtn = styled.button`
     background-color: #6c757d;
     cursor: not-allowed;
   }
+`;
+
+const SearchResult = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffe066;
+  color: #333;
+  font-size: 1.4rem;
+`;
+
+const ModifyBtn = styled.button`
+  border: none;
+  background: none;
+  color: #007bff;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const PencilIcon = styled(PencilIc)`
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const Text = styled.p`
+  color: #333;
+  font-size: 1.4rem;
+  font-weight: 500;
 `;
