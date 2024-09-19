@@ -12,17 +12,16 @@ export const Container = styled.section`
 export const InputContainer = styled.div`
   display: flex;
   width: 100%;
-  max-width: 400px;
   margin: 20px 0;
   padding: 10rem 1.6rem 0;
 `;
 
 export const Input = styled.input`
   flex: 1;
-  padding: 10px;
+  padding: 1.8rem 1.6rem 1.8rem 1rem;
   border: 2px solid #4caf50;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   outline: none;
   transition: border-color 0.3s ease;
 
@@ -38,7 +37,7 @@ export const Button = styled.button`
   border-radius: 8px;
   background-color: #4caf50;
   color: white;
-  font-size: 1rem;
+  font-size: 1.4rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 

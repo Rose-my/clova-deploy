@@ -14,13 +14,13 @@ export default function index() {
   return (
     <L.Container>
       <L.LogoIcon />
-      <L.LogoTxtIcon />
+      <L.LogoTxt>클로바</L.LogoTxt>
       <L.InputFields>
         <L.IdContainer>
-          <L.Field type="text" placeholder="아이디" />
+          <L.IdField type="text" placeholder="아이디" />
           <L.DomainText>@ewha.ac.kr</L.DomainText>
         </L.IdContainer>
-        <L.Field type="password" placeholder="비밀번호" />
+        <L.PwField type="password" placeholder="비밀번호" />
       </L.InputFields>
       <L.LoginBtn type="button" onClick={moveToSearch}>
         로그인

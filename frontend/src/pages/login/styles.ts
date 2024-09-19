@@ -6,7 +6,7 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100dvh;
+  height: 100vh;
   padding: 0 1.5rem;
 `;
 
@@ -15,6 +15,10 @@ export const LogoIcon = styled(LogoIc)`
   height: 6.4rem;
   margin-top: 8.7rem;
   margin-bottom: 1.5rem;
+`;
+
+export const LogoTxt = styled.p`
+  ${({ theme }) => theme.fonts.LogoTxt};
 `;
 
 export const LogoTxtIcon = styled(LogoTxtIc)`
@@ -37,7 +41,7 @@ export const IdContainer = styled.div`
   align-items: center;
 `;
 
-export const Field = styled.input`
+export const PwField = styled.input`
   flex: 1;
   ${({ theme }) => theme.fonts.Field};
 
@@ -58,9 +62,35 @@ export const Field = styled.input`
   }
 `;
 
+export const IdField = styled.input`
+  flex: 1;
+  width: 60%;
+  ${({ theme }) => theme.fonts.Field};
+
+  padding: 0.85rem 0;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  color: black;
+  font-size: 1.5rem;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    border-bottom-color: #495057;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #adb5bd;
+  }
+`;
+
+// left: 20rem;
+
 export const DomainText = styled.span`
   ${({ theme }) => theme.fonts.Field};
 
+  margin-left: 0.5rem;
+  color: #495057;
   font-size: 1.5rem;
 `;
 
