@@ -1,33 +1,22 @@
 import styled from "styled-components";
+import { PlusIc } from "@assets/index";
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 100%;
-  height: 100dvh;
-  padding: 2rem 1rem;
+  height: 100vh;
   background-color: #f9f9f9;
 `;
 
-export const Text = styled.div`
-  margin-top: 6rem;
-  margin-bottom: 1.6rem;
-
-  ${({ theme }) => theme.fonts.Field};
-
-  color: black;
-  font-size: 1.4rem;
-  font-weight: 400;
-`;
-
-export const FullItems = styled.div`
+export const FullItems = styled.div<{ $isScrolled: boolean }>`
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  flex: 1 1 auto;
   width: 100%;
-  padding: 0 0 8rem;
+  padding: ${({ $isScrolled }) => ($isScrolled ? "8rem 0" : "12rem 0")};
+  background-color: #f9f9f9;
 `;
 
 export const Image = styled.img`
@@ -79,4 +68,22 @@ export const Found = styled.p`
 export const Date = styled.p`
   color: #8c8c8c;
   font-size: 1rem;
+`;
+
+export const BtnWrapper = styled.button`
+  display: inline-flex;
+  gap: 10px;
+  align-items: flex-start;
+  position: fixed;
+  right: 2rem;
+  bottom: 10rem;
+  padding: 1.2rem;
+  border-radius: 100px;
+  background-color: #197a3a;
+  cursor: pointer;
+`;
+
+export const PlusIcon = styled(PlusIc)`
+  width: 2.4rem;
+  height: 2.4rem;
 `;

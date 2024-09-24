@@ -7,6 +7,7 @@ import * as T from "./styles";
 
 export default function index() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const nextItem = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % LOSTITEMS.length);
@@ -18,9 +19,13 @@ export default function index() {
 
   return (
     <T.Container>
-      <Header title="검색결과" url="/search" />
-      <T.Text>가장 비슷한 상위 5개 결과를 보여드려요.</T.Text>
-      <T.Pagination>
+      <Header
+        subtitle="가장 비슷한 상위 5개 결과를 보여드려요."
+        isScrolled={isScrolled}
+        setIsScrolled={setIsScrolled}
+        url="/search"
+      />
+      <T.Pagination $isScrolled={isScrolled}>
         <T.ArrowButton onClick={prevItem}>
           <T.LeftArrowIcon />
         </T.ArrowButton>
