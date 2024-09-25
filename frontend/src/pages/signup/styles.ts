@@ -196,15 +196,15 @@ export const PwField = styled.input`
   }
 `;
 
-export const PwCheckField = styled.input<{ isValid: boolean }>`
+export const PwCheckField = styled.input<{ $isvalid: boolean }>`
   padding: 0.8rem 1rem;
-  border: 2px solid ${({ isValid }) => (isValid ? "#28a745" : "#ced4da")};
+  border: 2px solid ${({ $isvalid }) => ($isvalid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
   font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
-    border-color: ${({ isValid }) => (isValid ? "#28a745" : "#495057")};
+    border-color: ${({ $isvalid }) => ($isvalid ? "#28a745" : "#495057")};
     outline: none;
     box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
   }

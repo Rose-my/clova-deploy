@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CustomCheckbox from "./components/CustomCheckbox";
 import * as S from "./styles";
 import Header from "./components/Header";
+import { usePostSignup } from "@hooks/signup/usePostSignup";
 
 export default function index() {
-  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
@@ -16,6 +16,7 @@ export default function index() {
   const [mandatoryAccepted, setMandatoryAccepted] = useState(false);
   const [optionalAccepted, setOptionalAccepted] = useState(false);
   const [allFieldsValid, setAllFieldsValid] = useState(false);
+  const { mutate: postSignupMutate } = usePostSignup();
 
   useEffect(() => {
     if (showCodeInput && timeLeft > 0) {
@@ -29,11 +30,17 @@ export default function index() {
 
   useEffect(() => {
     // Check if all fields are valid
-    setAllFieldsValid(password !== "" && password === passwordCheck && nickname !== "" && mandatoryAccepted);
-  }, [password, passwordCheck, nickname, mandatoryAccepted]);
+    setAllFieldsValid(
+      username !== "" && password !== "" && password === passwordCheck && nickname !== "" && mandatoryAccepted,
+    );
+  }, [username, password, passwordCheck, nickname, mandatoryAccepted]);
 
   function moveToLogin() {
-    navigate("/login");
+    postSignupMutate({
+      nickname: nickname,
+      username: username,
+      password: password,
+    });
   }
 
   function handleSendCode() {
@@ -46,6 +53,10 @@ export default function index() {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,7 +82,7 @@ export default function index() {
           </S.SendCodeBtn>
         </S.IdHeader>
         <S.IdBox>
-          <S.IdField type="text" placeholder="아이디" />
+          <S.IdField type="text" placeholder="아이디" value={username} onChange={handleUsernameChange} />
           <S.DomainText>@ewha.ac.kr</S.DomainText>
         </S.IdBox>
         {showCodeInput && (
@@ -94,7 +105,7 @@ export default function index() {
             placeholder="비밀번호 재입력"
             value={passwordCheck}
             onChange={handlePasswordCheckChange}
-            isValid={password !== "" && password === passwordCheck}
+            $isvalid={password !== "" && password === passwordCheck}
           />
           {password !== "" && passwordCheck !== "" && password !== passwordCheck && (
             <S.PasswordMismatchText>비밀번호가 일치하지 않습니다.</S.PasswordMismatchText>
