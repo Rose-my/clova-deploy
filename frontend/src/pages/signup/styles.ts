@@ -112,6 +112,13 @@ export const DomainText = styled.span`
   font-size: 1.3rem;
 `;
 
+/**----인증코드 */
+export const CodeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 1.5rem;
+`;
+
 export const SendCodeBtn = styled.button`
   margin-left: 1rem;
   padding: 0.75rem 1rem;
@@ -139,19 +146,18 @@ export const CodeBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1.5rem;
 `;
 
-export const CodeField = styled.input`
+export const CodeField = styled.input<{ $isvalid: boolean }>`
   flex: 1;
   padding: 0.8rem 1rem;
-  border: 2px solid #ced4da;
+  border: 2px solid ${({ $isvalid }) => ($isvalid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
   font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
-    border-color: #495057;
+    border-color: ${({ $isvalid }) => ($isvalid ? "#28a745" : "#495057")};
     outline: none;
     box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
   }
@@ -196,15 +202,15 @@ export const PwField = styled.input`
   }
 `;
 
-export const PwCheckField = styled.input<{ isValid: boolean }>`
+export const PwCheckField = styled.input<{ $isvalid: boolean }>`
   padding: 0.8rem 1rem;
-  border: 2px solid ${({ isValid }) => (isValid ? "#28a745" : "#ced4da")};
+  border: 2px solid ${({ $isvalid }) => ($isvalid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
   font-size: 1.4rem;
   transition: border-color 0.3s ease;
 
   &:focus {
-    border-color: ${({ isValid }) => (isValid ? "#28a745" : "#495057")};
+    border-color: ${({ $isvalid }) => ($isvalid ? "#28a745" : "#495057")};
     outline: none;
     box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
   }
@@ -214,8 +220,8 @@ export const PwCheckField = styled.input<{ isValid: boolean }>`
   }
 `;
 
-export const PasswordMismatchText = styled.span`
-  margin-top: -0.5rem;
+export const MismatchText = styled.span`
+  margin-top: 0.5rem;
   color: #dc3545;
   font-size: 1rem;
 `;
