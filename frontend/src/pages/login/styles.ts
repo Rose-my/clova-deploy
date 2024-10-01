@@ -123,6 +123,16 @@ export const LoginBtn = styled.button`
   }
 `;
 
+export const MismatchText = styled.span`
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0 1.4rem;
+  color: #dc3545;
+  font-size: 1rem;
+  text-align: left;
+`;
+
 export const ExtraBtns = styled.div`
   display: flex;
   justify-content: space-between;
