@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import CustomCheckbox from "./components/CustomCheckbox";
 import * as S from "./styles";
 import Header from "./components/Header";
-import { usePostSignup } from "@hooks/signup/usePostSignup";
+import { usePostEmail } from "@hooks/usePostEmail";
+import { usePostSignup } from "@hooks/usePostSignup";
+import { EmailcodeRes } from "types/types";
 
 export default function index() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showCodeInput, setShowCodeInput] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
   const [username, setUsername] = useState("");
+  const [emailcode, setEmailcode] = useState("");
+  const [emailcodeCheck, setEmailcodeCheck] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [nickname, setNickname] = useState("");
@@ -17,6 +21,7 @@ export default function index() {
   const [optionalAccepted, setOptionalAccepted] = useState(false);
   const [allFieldsValid, setAllFieldsValid] = useState(false);
   const { mutate: postSignupMutate } = usePostSignup();
+  const { mutate: postEmailMutate } = usePostEmail();
 
   useEffect(() => {
     if (showCodeInput && timeLeft > 0) {
@@ -31,9 +36,14 @@ export default function index() {
   useEffect(() => {
     // Check if all fields are valid
     setAllFieldsValid(
-      username !== "" && password !== "" && password === passwordCheck && nickname !== "" && mandatoryAccepted,
+      username !== "" &&
+        emailcode === emailcodeCheck &&
+        password !== "" &&
+        password === passwordCheck &&
+        nickname !== "" &&
+        mandatoryAccepted,
     );
-  }, [username, password, passwordCheck, nickname, mandatoryAccepted]);
+  }, [username, emailcode, password, passwordCheck, nickname, mandatoryAccepted]);
 
   function moveToLogin() {
     postSignupMutate({
@@ -46,7 +56,16 @@ export default function index() {
   function handleSendCode() {
     setShowCodeInput(true);
     setTimeLeft(300); // Reset the timer when clicking the button
-    // Implement code sending logic here
+    postEmailMutate(
+      {
+        email: username,
+      },
+      {
+        onSuccess: (res: EmailcodeRes) => {
+          setEmailcodeCheck(res.verificationCode);
+        },
+      },
+    );
   }
 
   const formatTime = (seconds: number) => {
@@ -57,6 +76,10 @@ export default function index() {
 
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
+  };
+
+  const handleEmailcodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailcode(e.target.value);
   };
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,13 +109,22 @@ export default function index() {
           <S.DomainText>@ewha.ac.kr</S.DomainText>
         </S.IdBox>
         {showCodeInput && (
-          <div>
+          <S.CodeContainer>
             <S.FieldText>인증코드 입력</S.FieldText>
             <S.CodeBox>
-              <S.CodeField type="text" placeholder="인증코드 입력" />
+              <S.CodeField
+                type="text"
+                placeholder="인증코드 입력"
+                value={emailcode}
+                onChange={handleEmailcodeChange}
+                $isvalid={emailcode !== "" && emailcode === emailcodeCheck}
+              />
               <S.Countdown>{formatTime(timeLeft)}</S.Countdown>
             </S.CodeBox>
-          </div>
+            {emailcode !== "" && emailcodeCheck !== "" && emailcode !== emailcodeCheck && (
+              <S.MismatchText>인증코드가 일치하지 않습니다.</S.MismatchText>
+            )}
+          </S.CodeContainer>
         )}
         <S.FieldText>비밀번호</S.FieldText>
         <S.PwBox>
@@ -108,7 +140,7 @@ export default function index() {
             $isvalid={password !== "" && password === passwordCheck}
           />
           {password !== "" && passwordCheck !== "" && password !== passwordCheck && (
-            <S.PasswordMismatchText>비밀번호가 일치하지 않습니다.</S.PasswordMismatchText>
+            <S.MismatchText>비밀번호가 일치하지 않습니다.</S.MismatchText>
           )}
         </S.PwBox>
         <S.FieldText>닉네임</S.FieldText>
