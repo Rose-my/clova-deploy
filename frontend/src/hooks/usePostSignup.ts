@@ -1,5 +1,6 @@
+import { postSignup } from "@api/postSignup";
 import { useMutation } from "react-query";
-import { postSignup } from "@api/signup/postSignup";
+
 import { useNavigate } from "react-router-dom";
 
 export function usePostSignup() {
