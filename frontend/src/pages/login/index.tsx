@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import * as L from "./styles";
 import { usePostLogin } from "@hooks/usePostLogin";
 import { useState } from "react";
+import { LoginRes } from "types/types";
+import { setToken } from "@utils/token";
 
 export default function index() {
   const navigate = useNavigate();
@@ -29,8 +31,10 @@ export default function index() {
         password: password,
       },
       {
-        onSuccess: () => {
+        onSuccess: (res: LoginRes) => {
+          const { access_token } = res.data;
           setMismatch(false);
+          setToken(access_token);
         },
         onError: () => {
           setMismatch(true);
