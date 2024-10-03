@@ -1,20 +1,37 @@
-import BigImg from "@assets/lost.png";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
 import { BtnWrapper } from "@styles/commonStyle";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as O from "./styles";
+import { useGetOne } from "@hooks/useGetOne";
 
 export default function index() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { lostid } = location.state;
+
+  const { data: ONE } = useGetOne(lostid);
+
+  if (!ONE) {
+    return <></>;
+  }
 
   return (
     <O.Container>
       <BtnWrapper type="button" onClick={() => navigate("/found/all")}>
         <O.BackIcon />
       </BtnWrapper>
-      <O.Image src={BigImg} alt="LostItem" />
-      <Item />
+      <O.Image src={`https://clova.pythonanywhere.com${ONE.data.image}`} alt="LostItem" />
+      <Item
+        lostdate={ONE.data.lostdate}
+        losttime={ONE.data.losttime}
+        description={ONE.data.description}
+        title={ONE.data.title}
+        moredesc={ONE.data.moredesc}
+        founded={ONE.data.founded}
+        getwhere={ONE.data.getwhere}
+        nowwhere={ONE.data.nowwhere}
+      />
       <Footer />
     </O.Container>
   );
