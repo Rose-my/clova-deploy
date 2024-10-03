@@ -26,7 +26,7 @@ const DUMMY_ITEMS: GetAllTypes[] = [
   {
     lostid: 0.3,
     image: airpod,
-    getwhere: "아산공학과",
+    getwhere: "아산공학관",
     lostdate: "2024.10.01",
     category: "이어폰/헤드셋",
     title: "에어팟",
