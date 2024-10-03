@@ -1,40 +1,53 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Item() {
+interface ItemProps {
+  lostdate: string;
+  losttime: string;
+  description: string;
+  title: string;
+  moredesc: string;
+  founded: boolean;
+  getwhere: string;
+  nowwhere: string;
+}
+
+export default function Item(props: ItemProps) {
+  const { lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
   const navigate = useNavigate();
 
+  console.log(founded);
   return (
     <Container>
       <Details>
-        <Title>헤드셋</Title>
+        <Title>{title}</Title>
         <SubDetail>
           <Wrapper>
             <Text>습득 장소</Text>
-            <Found>ECC</Found>
+            <Found>{getwhere}</Found>
           </Wrapper>
           <Wrapper>
             <Text>습득 일자</Text>
-            <NormalTxt>2024-03-32</NormalTxt>
+            <NormalTxt>{lostdate}</NormalTxt>
           </Wrapper>
           <Wrapper>
             <Text>보관 장소</Text>
-            <NormalTxt>학생 서비스센터</NormalTxt>
+            <NormalTxt>{nowwhere}</NormalTxt>
           </Wrapper>
         </SubDetail>
         <Divider />
         <SubDetail>
           <Wrapper>
             <Text>습득 시간</Text>
-            <NormalTxt>오후 12시전후</NormalTxt>
+            <NormalTxt>{losttime}</NormalTxt>
           </Wrapper>
           <Wrapper>
             <Text>물건 특징</Text>
-            <NormalTxt>왼쪽 헤드셋에 헬로키티 스티커 부착, ECC 신한열람실 74번 자리 주변 바닥에서 습득.</NormalTxt>
+            <NormalTxt>{description}</NormalTxt>
           </Wrapper>
           <Wrapper>
             <Text>전달 사항</Text>
-            <NormalTxt>ECC 신한열람실 74번 자리 주변 바닥에서 습득했습니다.</NormalTxt>
+            <NormalTxt>{moredesc}</NormalTxt>
           </Wrapper>
         </SubDetail>
         <Divider />
@@ -107,6 +120,7 @@ const NormalTxt = styled.p`
   color: #495057;
   font-size: 1.2rem;
   text-align: start;
+  line-height: normal;
 `;
 
 const Notify = styled.p`

@@ -16,28 +16,39 @@ export default function index() {
   if (!LOST_ITEMS) {
     return <></>;
   }
-  console.log(LOST_ITEMS?.data);
-
+  // [...DUMMY_ITEMS, ...LOST_ITEMS.data]
   return (
     <A.Container>
       <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
       <A.FullItems $isScrolled={isScrolled}>
-        {[...DUMMY_ITEMS, ...LOST_ITEMS.data].map((item: GetAllTypes) => (
-          <A.Item type="button" key={item.lostid} onClick={() => navigate("/found/one")}>
-            <A.Image
-              src={item.image.startsWith("/media") ? `https://clova.pythonanywhere.com${item.image}` : item.image}
-              alt={`Lost Item ${item.lostid}`}
-            />
-            <A.Details>
-              <A.Title>{item.title}</A.Title>
-              <A.Small>
-                <A.Found>{item.category}</A.Found>
-                <A.Date>{convertServerDate(item.lostdate)}</A.Date>
-              </A.Small>
-              <A.Location>{item.getwhere}</A.Location>
-            </A.Details>
-          </A.Item>
-        ))}
+        {LOST_ITEMS.data.map((item: GetAllTypes) => {
+          const { lostid, image, title, category, lostdate, getwhere } = item;
+
+          function moveToOne() {
+            navigate("/found/one", {
+              state: {
+                lostid: lostid,
+              },
+            });
+          }
+
+          return (
+            <A.Item type="button" key={lostid} onClick={moveToOne}>
+              <A.Image
+                src={image.startsWith("/media") ? `https://clova.pythonanywhere.com${image}` : image}
+                alt={`Lost Item ${lostid}`}
+              />
+              <A.Details>
+                <A.Title>{title}</A.Title>
+                <A.Small>
+                  <A.Found>{category}</A.Found>
+                  <A.Date>{convertServerDate(lostdate)}</A.Date>
+                </A.Small>
+                <A.Location>{getwhere}</A.Location>
+              </A.Details>
+            </A.Item>
+          );
+        })}
       </A.FullItems>
       <A.BtnWrapper type="button" onClick={() => navigate("/upload")}>
         <A.PlusIcon />
