@@ -23,8 +23,8 @@ export default function index() {
           const { lostid, image, title, category, getwhere, lostdate } = item;
 
           return (
-            <A.Item type="button" key={lostid} onClick={() => navigate("/found/one")}>
-              <A.Image src={image} alt={`Lost Item ${lostid}`} />
+            <A.Item type="button" key={lostid} onClick={() => navigate("/myupload/one")}>
+              <A.Image src={`https://clova2024.pythonanywhere.com${image}`} alt={`Lost Item ${lostid}`} />
               <A.Details>
                 <A.Title>{title}</A.Title>
                 <A.Small>
