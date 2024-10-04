@@ -1,28 +1,81 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PencilIc } from "@assets/index";
 import * as U from "../styles";
 import styled from "styled-components";
 import FilteredModal from "./FilteredModal";
+import { usePostUpload } from "@hooks/usePostUpload";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   lostImgUrl: File;
-  handleSubmit: () => void;
+  imgDesc: {
+    category: string;
+    description: string;
+    title: string;
+    losttime: string;
+    lostdate: string;
+  } | null;
 }
 
 export default function InputField(props: Props) {
-  const { lostImgUrl, handleSubmit } = props;
+  const { lostImgUrl, imgDesc } = props;
   const [locModalDisplay, setLocModalDisplay] = useState(true);
   const [strgModalDisplay, setStrgModalDisplay] = useState(true);
   const [clickLoc, setClickLoc] = useState("");
   const [clickStrg, setClickStrg] = useState("");
+  const [allFieldsValid, setAllFieldsValid] = useState(false);
 
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [category, setCategory] = useState("");
-  const [features, setFeatures] = useState("");
+  const [date, setDate] = useState(imgDesc?.lostdate || "");
+  const [time, setTime] = useState(imgDesc?.losttime || "");
+  const [category, setCategory] = useState(imgDesc?.category || "");
+  const [features, setFeatures] = useState(imgDesc?.description || "");
+  const [title, setTitle] = useState(imgDesc?.title || "");
   const [location, setLocation] = useState("");
   const [storage, setStorage] = useState("");
   const [notes, setNotes] = useState("");
+
+  const navigate = useNavigate();
+
+  const { mutate: postUploadMutate } = usePostUpload();
+
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleInput = () => {
+    const textArea = textAreaRef.current;
+    if (textArea) {
+      // Reset height to ensure shrinking if content is removed
+      textArea.style.height = "auto";
+      // Set height to match scrollHeight (content size)
+      textArea.style.height = `${textArea.scrollHeight}px`;
+    }
+  };
+
+  useEffect(() => {
+    handleInput(); // Ensure correct height when component mounts
+  }, []);
+
+  useEffect(() => {
+    // Set initial values from imgDesc if provided
+    if (imgDesc) {
+      setDate(imgDesc.lostdate);
+      setTime(imgDesc.losttime);
+      setCategory(imgDesc.category);
+      setFeatures(imgDesc.description);
+    }
+  }, [imgDesc]);
+
+  useEffect(() => {
+    // Check if all fields are valid
+    setAllFieldsValid(
+      date !== "" &&
+        time !== "" &&
+        category !== "" &&
+        features !== "" &&
+        title !== "" &&
+        location !== "" &&
+        storage !== "",
+    );
+  }, [date, time, category, features, title, location, storage]);
 
   function handleClearLocationBtn() {
     setLocation("");
@@ -60,6 +113,36 @@ export default function InputField(props: Props) {
     setStrgModalDisplay(true);
   }
 
+  const handleSubmit = () => {
+    navigate("/myupload/one", {
+      state: {
+        lostImgUrl: lostImgUrl,
+        losttime: time,
+        lostdate: date,
+        description: features,
+        title: title,
+        moredesc: notes,
+        founded: false,
+        category: category,
+        getwhere: location,
+        nowwhere: storage,
+      },
+    });
+    console.log("이미지 url" + lostImgUrl);
+    postUploadMutate({
+      image: lostImgUrl,
+      losttime: time,
+      lostdate: date,
+      description: features,
+      title: title,
+      moredesc: notes,
+      founded: false,
+      category: category,
+      getwhere: location,
+      nowwhere: storage,
+    });
+  };
+
   return (
     <Container>
       <ImageWrapper>
@@ -67,6 +150,15 @@ export default function InputField(props: Props) {
       </ImageWrapper>
       <U.Form>
         <U.NotiText>아래 항목들은 클릭하여 수정이 가능합니다.</U.NotiText>
+        <U.FormGroup>
+          <U.Label>물건 제목</U.Label>
+          <U.Input
+            type="text"
+            placeholder="물품의 제목입니다."
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </U.FormGroup>
         <U.FormGroup>
           <U.Label>습득 일자</U.Label>
           <U.Input
@@ -96,10 +188,11 @@ export default function InputField(props: Props) {
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>물건 특징</U.Label>
-          <U.Input
-            type="text"
+          <U.TextArea
+            ref={textAreaRef}
             placeholder="물품의 특징입니다."
             value={features}
+            onInput={handleInput}
             onChange={(e) => setFeatures(e.target.value)}
           />
         </U.FormGroup>
@@ -161,7 +254,9 @@ export default function InputField(props: Props) {
           />
         </U.FormGroup>
       </U.Form>
-      <U.SubmitButton onClick={handleSubmit}>등록 하기</U.SubmitButton>
+      <U.SubmitButton onClick={handleSubmit} disabled={!allFieldsValid}>
+        등록 하기
+      </U.SubmitButton>
       <U.FooterText>누군가의 잃어버린 물건을 등록해주셔서 감사합니다.</U.FooterText>
     </Container>
   );
