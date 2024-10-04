@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useGetAll } from "@hooks/useGetAll";
 import { GetAllTypes } from "@api/getAll";
 import { convertServerDate } from "@utils/dateFormat";
-import DUMMY_ITEMS from "@core/lostItemsData";
+// import DUMMY_ITEMS from "@core/lostItemsData";
 
 export default function index() {
   const navigate = useNavigate();
