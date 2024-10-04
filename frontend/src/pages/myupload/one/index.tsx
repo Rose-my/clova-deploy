@@ -11,6 +11,7 @@ export default function index() {
     <O.Container>
       <O.Image src={URL.createObjectURL(lostImgUrl)} alt="LostItem" />
       <Item
+        category={category}
         lostdate={lostdate}
         losttime={losttime}
         description={description}

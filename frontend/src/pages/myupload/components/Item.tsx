@@ -9,12 +9,11 @@ interface ItemProps {
   founded: boolean;
   getwhere: string;
   nowwhere: string;
+  category: string;
 }
 export default function Item(props: ItemProps) {
-  const { lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
+  const { category, lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
   const navigate = useNavigate();
-
-  console.log(founded);
 
   return (
     <Container>
@@ -36,6 +35,10 @@ export default function Item(props: ItemProps) {
         </SubDetail>
         <Divider />
         <SubDetail>
+          <Wrapper>
+            <Text>카테고리</Text>
+            <NormalTxt>{category}</NormalTxt>
+          </Wrapper>
           <Wrapper>
             <Text>습득 시간</Text>
             <NormalTxt>{losttime}</NormalTxt>
