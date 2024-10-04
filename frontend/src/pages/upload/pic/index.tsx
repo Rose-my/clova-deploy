@@ -26,8 +26,8 @@ export default function index(props: Props) {
         <input id="uploadButton" name="uploadButton" ref={inputRef} type="file" accept="image/*" onChange={uploadImg} />
       </ProfileUploadBtn>
       {!isVerified && <InstructionText>습득한 물건 이미지를 등록해주세요!</InstructionText>}
-      {!isVerified && <InstructionText>c.lova가 물건에 대해 설명해드릴게요.</InstructionText>}
-      {isVerified && <InstructionText>c.lova에게 물건 설명을 부탁했어요.</InstructionText>}
+      {!isVerified && <InstructionText>c.lova(클로바)가 물건에 대해 설명해드릴게요.</InstructionText>}
+      {isVerified && <InstructionText>c.lova(클로바)에게 물건 설명을 부탁했어요.</InstructionText>}
     </ImageUploadContainer>
   );
 }

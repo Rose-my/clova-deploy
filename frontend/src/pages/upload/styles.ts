@@ -91,6 +91,11 @@ export const SubmitButton = styled.button`
   &:active {
     background-color: #197a3a;
   }
+
+  &:disabled {
+    background-color: #ced4da;
+    cursor: not-allowed;
+  }
 `;
 
 export const FooterText = styled.p`
