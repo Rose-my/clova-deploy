@@ -33,7 +33,7 @@ export default function index() {
 
           return (
             <A.Item type="button" key={lostid} onClick={moveToOne}>
-              <A.Image src={`https://clova.pythonanywhere.com${image}`} alt={`Lost Item ${lostid}`} />
+              <A.Image src={`https://clova2024.pythonanywhere.com${image}`} alt={`Lost Item ${lostid}`} />
               <A.Details>
                 <A.Title>{title}</A.Title>
                 <A.Small>

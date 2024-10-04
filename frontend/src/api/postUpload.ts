@@ -18,7 +18,7 @@ export async function postUpload(props: PostUploadTypes) {
 
   // Create FormData and append all required fields
   const requestBody = new FormData();
-  requestBody.append("uploadImg", image);
+  requestBody.append("image", image);
   requestBody.append("losttime", losttime);
   requestBody.append("lostdate", lostdate);
   requestBody.append("description", description);

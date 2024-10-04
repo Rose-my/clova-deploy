@@ -23,7 +23,14 @@ export default function index(props: Props) {
     <ImageUploadContainer>
       <ProfileUploadBtn type="button" onClick={() => inputRef.current?.click()}>
         <Profile src={beforeUpload} alt="profileImg" id="profileImg" />
-        <input id="uploadButton" name="uploadButton" ref={inputRef} type="file" accept="image/*" onChange={uploadImg} />
+        <input
+          id="uploadButton"
+          name="uploadButton"
+          ref={inputRef}
+          type="file"
+          accept="image/*,image/gif,image/jpeg,image/png,image/jpg,image/webp,image/heic"
+          onChange={uploadImg}
+        />
       </ProfileUploadBtn>
       {!isVerified && <InstructionText>습득한 물건 이미지를 등록해주세요!</InstructionText>}
       {!isVerified && <InstructionText>c.lova(클로바)가 물건에 대해 설명해드릴게요.</InstructionText>}
