@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { PencilIc } from "@assets/index";
 import * as U from "../styles";
 import styled from "styled-components";
@@ -37,6 +37,22 @@ export default function InputField(props: Props) {
   const navigate = useNavigate();
 
   const { mutate: postUploadMutate } = usePostUpload();
+
+  const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleInput = () => {
+    const textArea = textAreaRef.current;
+    if (textArea) {
+      // Reset height to ensure shrinking if content is removed
+      textArea.style.height = "auto";
+      // Set height to match scrollHeight (content size)
+      textArea.style.height = `${textArea.scrollHeight}px`;
+    }
+  };
+
+  useEffect(() => {
+    handleInput(); // Ensure correct height when component mounts
+  }, []);
 
   useEffect(() => {
     // Set initial values from imgDesc if provided
@@ -172,10 +188,11 @@ export default function InputField(props: Props) {
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>물건 특징</U.Label>
-          <U.Input
-            type="text"
+          <U.TextArea
+            ref={textAreaRef}
             placeholder="물품의 특징입니다."
             value={features}
+            onInput={handleInput}
             onChange={(e) => setFeatures(e.target.value)}
           />
         </U.FormGroup>

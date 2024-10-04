@@ -57,6 +57,25 @@ export const Input = styled.input`
   }
 `;
 
+export const TextArea = styled.textarea`
+  overflow: hidden;
+  width: 100%;
+  padding: 1.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  ${({ theme }) => theme.fonts.TextArea};
+
+  font-size: 1.4rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+  resize: none;
+
+  &:focus {
+    border-color: #28a745;
+  }
+`;
+
 export const Divider = styled.hr`
   width: 100%;
   margin: 20px 0;

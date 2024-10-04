@@ -40,6 +40,7 @@ const fonts = {
     font-weight: 700;
     line-height: 140%; /* 25.2px */
   `,
+
   Footer: css`
     font-family: WavvePADO-Regular;
     font-style: normal;
@@ -54,6 +55,14 @@ const fonts = {
     font-style: normal;
     font-size: 3.8rem;
     font-weight: 400;
+  `,
+
+  TextArea: css`
+    font-family: WavvePADO-Regular;
+    color: #000;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%; /* 25.2px */
   `,
 };
 
