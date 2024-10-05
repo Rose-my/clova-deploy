@@ -21,8 +21,9 @@ export default function index() {
       <BtnWrapper type="button" onClick={() => navigate("/found/all")}>
         <O.BackIcon />
       </BtnWrapper>
-      <O.Image src={`https://clova.pythonanywhere.com${ONE.data.image}`} alt="LostItem" />
+      <O.Image src={`https://clova2024.pythonanywhere.com${ONE.data.image}`} alt="LostItem" />
       <Item
+        category={ONE.data.category}
         lostdate={ONE.data.lostdate}
         losttime={ONE.data.losttime}
         description={ONE.data.description}

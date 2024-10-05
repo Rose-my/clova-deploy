@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useGetAll } from "@hooks/useGetAll";
 import { GetAllTypes } from "@api/getAll";
 import { convertServerDate } from "@utils/dateFormat";
-import DUMMY_ITEMS from "@core/lostItemsData";
 
 export default function index() {
   const navigate = useNavigate();
@@ -34,10 +33,7 @@ export default function index() {
 
           return (
             <A.Item type="button" key={lostid} onClick={moveToOne}>
-              <A.Image
-                src={image.startsWith("/media") ? `https://clova.pythonanywhere.com${image}` : image}
-                alt={`Lost Item ${lostid}`}
-              />
+              <A.Image src={`https://clova2024.pythonanywhere.com${image}`} alt={`Lost Item ${lostid}`} />
               <A.Details>
                 <A.Title>{title}</A.Title>
                 <A.Small>

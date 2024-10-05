@@ -27,7 +27,7 @@ export default function index() {
       </M.ProfileSection>
       <M.Menu>
         <M.MenuItem onClick={() => navigate("/myupload/all")}>
-          <M.Button>등록 물품</M.Button>
+          <M.Button>내등록 물품</M.Button>
           <M.MoveArrowIcon />
         </M.MenuItem>
         <M.MenuItem onClick={() => navigate("/mypage/keyword")}>
