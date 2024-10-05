@@ -9,12 +9,13 @@ interface ItemProps {
   founded: boolean;
   getwhere: string;
   nowwhere: string;
+  category: string;
 }
 export default function Item(props: ItemProps) {
-  const { lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
+  const { category, lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
   const navigate = useNavigate();
 
-  console.log(founded);
+  console.log("founded?" + founded);
 
   return (
     <Container>
@@ -37,6 +38,10 @@ export default function Item(props: ItemProps) {
         <Divider />
         <SubDetail>
           <Wrapper>
+            <Text>카테고리</Text>
+            <NormalTxt>{category}</NormalTxt>
+          </Wrapper>
+          <Wrapper>
             <Text>습득 시간</Text>
             <NormalTxt>{losttime}</NormalTxt>
           </Wrapper>
@@ -46,7 +51,7 @@ export default function Item(props: ItemProps) {
           </Wrapper>
           <Wrapper>
             <Text>전달 사항</Text>
-            <NormalTxt>{moredesc}</NormalTxt>
+            {moredesc ? <NormalTxt>{moredesc}</NormalTxt> : <NormalTxt>전달 사항이 없습니다.</NormalTxt>}
           </Wrapper>
         </SubDetail>
         <Divider />

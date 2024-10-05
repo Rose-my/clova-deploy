@@ -16,6 +16,7 @@ import Notfound from "@pages/results/notfound";
 import FoundAll from "@pages/found/all";
 import FoundOne from "@pages/found/one";
 import Upload from "@pages/upload";
+import UploadOne from "@pages/upload/one";
 
 import Mypage from "@pages/mypage";
 import MyuploadAll from "@pages/myupload/all";
@@ -51,6 +52,7 @@ const Router = createBrowserRouter([
 
       /*------등록하기-------*/
       { path: "/upload", element: <Upload /> },
+      { path: "/upload/one", element: <UploadOne /> },
 
       /*------마이페이지---------*/
       { path: "/mypage", element: <Mypage /> },
