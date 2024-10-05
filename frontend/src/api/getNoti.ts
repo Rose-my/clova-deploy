@@ -6,7 +6,7 @@ export interface Response {
 }
 
 export interface GetNotiTypes {
-  noticeId: number;
+  noticeid: number;
   title: string;
   noticeDate: string;
 }

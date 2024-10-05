@@ -34,7 +34,7 @@ export default function index() {
           <M.Button>키워드 알림 설정</M.Button>
           <M.MoveArrowIcon />
         </M.MenuItem>
-        <M.MenuItem onClick={() => navigate("/mypage/notification")}>
+        <M.MenuItem onClick={() => navigate("/mypage/notification/all")}>
           <M.Button>공지사항</M.Button>
           <M.MoveArrowIcon />
         </M.MenuItem>
