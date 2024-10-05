@@ -35,16 +35,19 @@ export default function index() {
         </P.StoreButton>
       </P.StoreButtons>
       <P.ProductList>
-        {PRODUCTS.data.map((product) => (
-          <P.ProductItem key={product.stuffid}>
-            {/* <P.ProductImage src={product.image} alt={product.name} /> */}
-            <P.ProductDetails>
-              <P.StoreName>{product.stuff}</P.StoreName>
-              <P.ProductName>{product.stuff}</P.ProductName>
-              <P.ProductPoints>{product.price}포인트</P.ProductPoints>
-            </P.ProductDetails>
-          </P.ProductItem>
-        ))}
+        {PRODUCTS.data.map((product) => {
+          const { stuffid, shop, stuff, price } = product;
+          return (
+            <P.ProductItem key={stuffid}>
+              {/* <P.ProductImage src={product.image} alt={product.name} /> */}
+              <P.ProductDetails>
+                <P.StoreName>{shop}</P.StoreName>
+                <P.ProductName>{stuff}</P.ProductName>
+                <P.ProductPoints>{price}포인트</P.ProductPoints>
+              </P.ProductDetails>
+            </P.ProductItem>
+          );
+        })}
       </P.ProductList>
       <Footer />
     </P.Container>

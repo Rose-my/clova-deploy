@@ -7,6 +7,7 @@ export interface Response {
 
 export interface GetShopTypes {
   stuffid: number;
+  shop: string;
   stuff: string;
   price: number;
   soldout: boolean;
