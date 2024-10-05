@@ -12,7 +12,7 @@ export const Container = styled.section`
 `;
 
 export const BackIcon = styled(BackIc)`
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 2rem;
   width: 2.4rem;
@@ -21,7 +21,7 @@ export const BackIcon = styled(BackIc)`
 
 export const Image = styled.img`
   width: 100%;
-  height: 30rem;
+  height: 35rem;
   object-fit: cover;
   object-position: center;
 `;

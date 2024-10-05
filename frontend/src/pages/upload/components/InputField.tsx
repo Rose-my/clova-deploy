@@ -114,7 +114,7 @@ export default function InputField(props: Props) {
   }
 
   const handleSubmit = () => {
-    navigate("/myupload/one", {
+    navigate("/upload/one", {
       state: {
         lostImgUrl: lostImgUrl,
         losttime: time,
@@ -128,7 +128,7 @@ export default function InputField(props: Props) {
         nowwhere: storage,
       },
     });
-    console.log("이미지 url" + lostImgUrl);
+
     postUploadMutate({
       image: lostImgUrl,
       losttime: time,

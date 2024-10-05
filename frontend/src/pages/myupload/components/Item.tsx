@@ -15,6 +15,8 @@ export default function Item(props: ItemProps) {
   const { category, lostdate, losttime, description, title, moredesc, founded, getwhere, nowwhere } = props;
   const navigate = useNavigate();
 
+  console.log("founded?" + founded);
+
   return (
     <Container>
       <Details>
@@ -49,7 +51,7 @@ export default function Item(props: ItemProps) {
           </Wrapper>
           <Wrapper>
             <Text>전달 사항</Text>
-            <NormalTxt>{moredesc}</NormalTxt>
+            {moredesc ? <NormalTxt>{moredesc}</NormalTxt> : <NormalTxt>전달 사항이 없습니다.</NormalTxt>}
           </Wrapper>
         </SubDetail>
         <Divider />

@@ -17,13 +17,21 @@ export default function index() {
 
   return (
     <A.Container>
-      <SubHeader title="등록 물품" url="/mypage" />
+      <SubHeader title="내등록 물품" url="/mypage" />
       <A.FullItems>
         {UPLOAD_ITEMS.data.map((item: GetMyupload) => {
           const { lostid, image, title, category, getwhere, lostdate } = item;
 
+          function moveToOne() {
+            navigate("/myupload/one", {
+              state: {
+                lostid: lostid,
+              },
+            });
+          }
+
           return (
-            <A.Item type="button" key={lostid} onClick={() => navigate("/myupload/one")}>
+            <A.Item type="button" key={lostid} onClick={moveToOne}>
               <A.Image src={`https://clova2024.pythonanywhere.com${image}`} alt={`Lost Item ${lostid}`} />
               <A.Details>
                 <A.Title>{title}</A.Title>
