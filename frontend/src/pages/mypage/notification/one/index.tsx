@@ -1,16 +1,15 @@
-import { useGetNoti } from "@hooks/useGetNoti";
 import Footer from "@pages/mypage/components/Footer";
 import Header from "../../components/SubHeader";
 import * as N from "./styles";
-import { GetNotiTypes } from "@api/getNoti";
 import { convertServerDate } from "@utils/dateFormat";
 import { useLocation } from "react-router-dom";
+import { useGetNotiOne } from "@hooks/useGetNotiOne";
 
 export default function index() {
   const location = useLocation();
-  const { lostid } = location.state;
+  const { noticeid } = location.state;
 
-  const { data: ONE } = useGetOne(lostid);
+  const { data: ONE } = useGetNotiOne(noticeid);
 
   if (!ONE) {
     return <></>;
@@ -18,20 +17,13 @@ export default function index() {
 
   return (
     <N.Container>
-      <Header title="공지사항" url="/mypage" />
+      <Header title="공지사항" url="/mypage/notification/all" />
       <N.Contents>
-        {NOTIES.data.map((item: GetNotiTypes) => {
-          const { noticeDate, noticeid, title } = item;
-
-          return (
-            <N.SubDetail type="button" key={noticeid}>
-              <N.Wrapper>
-                <N.Title>{title}</N.Title>
-                <N.Date>{convertServerDate(noticeDate)}</N.Date>
-              </N.Wrapper>
-            </N.SubDetail>
-          );
-        })}
+        <N.Wrapper>
+          <N.Title>{ONE.data.title}</N.Title>
+          <N.Date>{convertServerDate(ONE.data.noticeDate)}</N.Date>
+        </N.Wrapper>
+        <N.Text>{ONE.data.contents}</N.Text>
       </N.Contents>
       <Footer />
     </N.Container>
