@@ -23,7 +23,8 @@ import MyuploadAll from "@pages/myupload/all";
 import MyuploadOne from "@pages/myupload/one";
 
 import MypageKeyword from "@pages/mypage/keyword";
-import MypageNotification from "@pages/mypage/notification";
+import MypageNotificationAll from "@pages/mypage/notification/all";
+import MypageNotificationOne from "@pages/mypage/notification/one";
 import MypagePoint from "@pages/mypage/point";
 import GlobalStyle from "@styles/globalStyle";
 import { ThemeProvider } from "styled-components";
@@ -56,7 +57,8 @@ const Router = createBrowserRouter([
 
       /*------마이페이지---------*/
       { path: "/mypage", element: <Mypage /> },
-      { path: "/mypage/notification", element: <MypageNotification /> },
+      { path: "/mypage/notification/all", element: <MypageNotificationAll /> },
+      { path: "/mypage/notification/one", element: <MypageNotificationOne /> },
       { path: "/mypage/keyword", element: <MypageKeyword /> },
       { path: "/mypage/point", element: <MypagePoint /> },
 

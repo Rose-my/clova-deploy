@@ -2,10 +2,13 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./components/Footer";
 import * as M from "./styles";
 import SubHeader from "./components/SubHeader";
+import { getNickname, getId } from "@utils/token";
 
 export default function index() {
   const navigate = useNavigate();
   const isMypage = true;
+  const nickname = getNickname();
+  const username = getId();
 
   return (
     <M.Container>
@@ -13,8 +16,8 @@ export default function index() {
       <M.ProfileSection>
         <M.ProfileIcon />
         <M.Contents>
-          <M.Nickname>망고주스</M.Nickname>
-          <M.Id>ewha.ac.kr</M.Id>
+          <M.Nickname>{nickname} 님</M.Nickname>
+          <M.Id>{`${username}@ewha.ac.kr`}</M.Id>
           <M.PointBox>
             <M.PointText>행운 포인트 점수</M.PointText>
             <M.Point>35</M.Point>
@@ -34,7 +37,7 @@ export default function index() {
           <M.Button>키워드 알림 설정</M.Button>
           <M.MoveArrowIcon />
         </M.MenuItem>
-        <M.MenuItem onClick={() => navigate("/mypage/notification")}>
+        <M.MenuItem onClick={() => navigate("/mypage/notification/all")}>
           <M.Button>공지사항</M.Button>
           <M.MoveArrowIcon />
         </M.MenuItem>

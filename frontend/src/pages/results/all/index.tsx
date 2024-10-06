@@ -1,8 +1,9 @@
-import LOSTITEMS from "@core/lostItemsData";
+import DUMMY_ITEMS from "@core/lostItemsData";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import * as A from "./styles";
 import { useState } from "react";
+import { GetAllTypes } from "@api/getAll";
 
 export default function index() {
   const navigate = useNavigate();
@@ -17,19 +18,23 @@ export default function index() {
         url="/results/top"
       />
       <A.FullItems $isScrolled={isScrolled}>
-        {LOSTITEMS.map((item) => (
-          <A.Item type="button" key={item.id} onClick={() => navigate("/found/one")}>
-            <A.Image src={item.img} alt={`Lost Item ${item.id}`} />
-            <A.Details>
-              <A.Title>에어팟 프로</A.Title>
-              <A.Small>
-                <A.Found>{item.location}</A.Found>
-                <Date>{item.date}</Date>
-              </A.Small>
-              <A.Location>{item.location}</A.Location>
-            </A.Details>
-          </A.Item>
-        ))}
+        {DUMMY_ITEMS.map((item: GetAllTypes) => {
+          const { lostid, image, getwhere, lostdate, category, title } = item;
+          return (
+            <A.Item type="button" key={lostid} onClick={() => navigate("/found/one")}>
+              <A.Image src={image} alt={`Lost Item ${lostid}`} />
+              <A.Details>
+                <A.Title>{title}</A.Title>
+                <A.Small>
+                  <A.Found>{category}</A.Found>
+                  <A.Found>{getwhere}</A.Found>
+                  <Date>{lostdate}</Date>
+                </A.Small>
+                <A.Location>{getwhere}</A.Location>
+              </A.Details>
+            </A.Item>
+          );
+        })}
       </A.FullItems>
     </A.Container>
   );

@@ -2,10 +2,16 @@ import { useState } from "react";
 import * as P from "./styles";
 import Header from "../components/SubHeader";
 import Footer from "../components/Footer";
-import PRODUCTS from "@core/productsData";
+import { useGetShop } from "@hooks/useGetShop";
 
 export default function index() {
   const [searchTerm, setSearchTerm] = useState("");
+
+  const { data: PRODUCTS } = useGetShop();
+
+  if (!PRODUCTS) {
+    return <></>;
+  }
 
   return (
     <P.Container>
@@ -29,16 +35,19 @@ export default function index() {
         </P.StoreButton>
       </P.StoreButtons>
       <P.ProductList>
-        {PRODUCTS.map((product, index) => (
-          <P.ProductItem key={index}>
-            <P.ProductImage src={product.image} alt={product.name} />
-            <P.ProductDetails>
-              <P.StoreName>{product.store}</P.StoreName>
-              <P.ProductName>{product.name}</P.ProductName>
-              <P.ProductPoints>{product.points}포인트</P.ProductPoints>
-            </P.ProductDetails>
-          </P.ProductItem>
-        ))}
+        {PRODUCTS.data.map((product) => {
+          const { stuffid, shop, stuff, price } = product;
+          return (
+            <P.ProductItem key={stuffid}>
+              {/* <P.ProductImage src={product.image} alt={product.name} /> */}
+              <P.ProductDetails>
+                <P.StoreName>{shop}</P.StoreName>
+                <P.ProductName>{stuff}</P.ProductName>
+                <P.ProductPoints>{price}포인트</P.ProductPoints>
+              </P.ProductDetails>
+            </P.ProductItem>
+          );
+        })}
       </P.ProductList>
       <Footer />
     </P.Container>
