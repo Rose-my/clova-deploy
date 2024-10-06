@@ -3,7 +3,7 @@ import * as L from "./styles";
 import { usePostLogin } from "@hooks/usePostLogin";
 import { useState } from "react";
 import { LoginRes } from "types/types";
-import { setToken } from "@utils/token";
+import { setNickname, setToken, setId } from "@utils/token";
 
 export default function index() {
   const navigate = useNavigate();
@@ -32,9 +32,12 @@ export default function index() {
       },
       {
         onSuccess: (res: LoginRes) => {
-          const { access_token } = res.data;
+          const { access_token, nickname, username } = res.data;
+          console.log(username);
           setMismatch(false);
           setToken(access_token);
+          setId(username);
+          setNickname(nickname);
         },
         onError: () => {
           setMismatch(true);
