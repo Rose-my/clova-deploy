@@ -5,6 +5,7 @@ import styled from "styled-components";
 import FilteredModal from "./FilteredModal";
 import { usePostUpload } from "@hooks/usePostUpload";
 import { useNavigate } from "react-router-dom";
+import { CATEGORIES } from "@core/categoryData";
 
 interface Props {
   lostImgUrl: File;
@@ -179,12 +180,11 @@ export default function InputField(props: Props) {
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>카테고리</U.Label>
-          <U.Input
-            type="text"
-            placeholder="물품의 정보 카테고리입니다."
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <U.Dropdown $selected={!!category} value={category} onChange={(e) => setCategory(e.target.value)}>
+            {CATEGORIES.map((cat) => (
+              <U.Option key={cat.id}>{cat.category}</U.Option>
+            ))}
+          </U.Dropdown>
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>물건 특징</U.Label>

@@ -35,6 +35,25 @@ export const FormGroup = styled.div`
   margin-bottom: 15px;
 `;
 
+export const Dropdown = styled.select<{ $selected: boolean }>`
+  width: 100%;
+  padding: 1.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: ${({ $selected, theme }) => ($selected ? theme.colors.gray_100 : theme.colors.main_bg)};
+  color: ${({ $selected }) => ($selected ? "black" : "white")};
+  font-size: 1.4rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  ${({ theme }) => theme.fonts.TextArea};
+`;
+
+export const Option = styled.option`
+  padding: 1rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+`;
+
 export const Label = styled.label`
   display: block;
   margin-bottom: 5px;
@@ -122,4 +141,10 @@ export const FooterText = styled.p`
   color: #666;
   font-size: 1rem;
   text-align: center;
+`;
+
+export const ErrorText = styled.span`
+  margin-top: 0.5rem;
+  color: #dc3545;
+  font-size: 1rem;
 `;
