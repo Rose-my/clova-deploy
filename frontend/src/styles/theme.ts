@@ -64,6 +64,15 @@ const fonts = {
     font-weight: 700;
     line-height: 140%; /* 25.2px */
   `,
+
+  Category: css`
+    font-family: WavvePADO-Regular;
+    color: black;
+    font-style: normal;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 140%; /* 25.2px */
+  `,
 };
 
 const effects = {

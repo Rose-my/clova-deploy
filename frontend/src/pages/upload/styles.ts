@@ -35,22 +35,19 @@ export const FormGroup = styled.div`
   margin-bottom: 15px;
 `;
 
-export const Dropdown = styled.select<{ $selected: boolean }>`
+export const Dropdown = styled.select`
   width: 100%;
   padding: 1.8rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: ${({ $selected, theme }) => ($selected ? theme.colors.gray_100 : theme.colors.main_bg)};
-  color: ${({ $selected }) => ($selected ? "black" : "white")};
-  font-size: 1.4rem;
+  background-color: #ffe066;
   outline: none;
-  transition: border-color 0.3s ease;
-  ${({ theme }) => theme.fonts.TextArea};
 `;
 
 export const Option = styled.option`
-  padding: 1rem;
-  font-size: 1.4rem;
+  padding: 1.8rem;
+  ${({ theme }) => theme.fonts.Category};
+
   cursor: pointer;
 `;
 

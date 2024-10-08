@@ -212,7 +212,7 @@ export default function InputField(props: Props) {
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>카테고리</U.Label>
-          <U.Dropdown $selected={!!category} value={category} onChange={(e) => setCategory(e.target.value)}>
+          <U.Dropdown value={category} onChange={(e) => setCategory(e.target.value)}>
             {CATEGORIES.map((cat) => (
               <U.Option key={cat.id}>{cat.category}</U.Option>
             ))}
