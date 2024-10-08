@@ -309,6 +309,12 @@ const LOCATIONS: LocationsTypes[] = [
     id: 119,
     loc: "연협(연구협력관) 기타",
   },
+
+  /*-------연협(연구협력관)---------- */
+  {
+    id: 120,
+    loc: "중도(중앙도서관)",
+  },
 ];
 
 export { LOCATIONS };

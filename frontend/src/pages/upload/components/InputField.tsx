@@ -5,6 +5,8 @@ import styled from "styled-components";
 import FilteredModal from "./FilteredModal";
 import { usePostUpload } from "@hooks/usePostUpload";
 import { useNavigate } from "react-router-dom";
+import { CATEGORIES } from "@core/categoryData";
+import PrivateImg from "@assets/privateImg.png";
 
 interface Props {
   lostImgUrl: File;
@@ -38,6 +40,7 @@ export default function InputField(props: Props) {
 
   const { mutate: postUploadMutate } = usePostUpload();
 
+  /**---TextArea 문단 높이*/
   const textAreaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleInput = () => {
@@ -113,10 +116,36 @@ export default function InputField(props: Props) {
     setStrgModalDisplay(true);
   }
 
-  const handleSubmit = () => {
+  const convertUrlToFile = async (imageUrl: string): Promise<File> => {
+    // Fetch the image data from the URL
+    const response = await fetch(imageUrl);
+    // Convert the response to a Blob
+    const blob = await response.blob();
+
+    // Create a File object from the Blob with the desired filename and type
+    const file = new File([blob], "image.png", { type: blob.type });
+
+    return file;
+  };
+
+  const handleSubmit = async () => {
+    if (category === "개인정보 포함 물품") {
+      try {
+        const privateImageFile = await convertUrlToFile(PrivateImg); // string URL -> File
+        postUpload(privateImageFile);
+      } catch (error) {
+        console.error("URL -> File 실패", error);
+      }
+    } else {
+      postUpload(lostImgUrl); // 유저가 업로드한 이미지 Post
+    }
+  };
+
+  // Function to handle the postUpload mutation
+  const postUpload = (image: File) => {
     navigate("/upload/one", {
       state: {
-        lostImgUrl: lostImgUrl,
+        lostImgUrl: image, // lostImgUrl : File 타입
         losttime: time,
         lostdate: date,
         description: features,
@@ -130,7 +159,7 @@ export default function InputField(props: Props) {
     });
 
     postUploadMutate({
-      image: lostImgUrl,
+      image, // image : File 타입
       losttime: time,
       lostdate: date,
       description: features,
@@ -146,7 +175,11 @@ export default function InputField(props: Props) {
   return (
     <Container>
       <ImageWrapper>
-        <Image src={URL.createObjectURL(lostImgUrl)} alt="profileImg" id="profileImg" />
+        {category == "개인정보 포함 물품" ? (
+          <Image src={PrivateImg} alt="privateImg" />
+        ) : (
+          <Image src={URL.createObjectURL(lostImgUrl)} alt="profileImg" id="profileImg" />
+        )}
       </ImageWrapper>
       <U.Form>
         <U.NotiText>아래 항목들은 클릭하여 수정이 가능합니다.</U.NotiText>
@@ -179,12 +212,11 @@ export default function InputField(props: Props) {
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>카테고리</U.Label>
-          <U.Input
-            type="text"
-            placeholder="물품의 정보 카테고리입니다."
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          />
+          <U.Dropdown $selected={!!category} value={category} onChange={(e) => setCategory(e.target.value)}>
+            {CATEGORIES.map((cat) => (
+              <U.Option key={cat.id}>{cat.category}</U.Option>
+            ))}
+          </U.Dropdown>
         </U.FormGroup>
         <U.FormGroup>
           <U.Label>물건 특징</U.Label>
