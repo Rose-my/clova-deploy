@@ -37,11 +37,12 @@ export const FormGroup = styled.div`
 
 export const Dropdown = styled.select`
   width: 100%;
-  padding: 1.8rem;
+  padding: 2rem 1.8rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #ffe066;
   outline: none;
+  ${({ theme }) => theme.fonts.Category};
 `;
 
 export const Option = styled.option`
