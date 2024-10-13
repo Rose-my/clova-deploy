@@ -100,7 +100,7 @@ export default function index() {
       <S.SignupFields>
         <S.IdHeader>
           <S.FieldText>아이디</S.FieldText>
-          <S.SendCodeBtn type="button" onClick={handleSendCode}>
+          <S.SendCodeBtn type="button" onClick={handleSendCode} disabled={!username}>
             인증코드 보내기
           </S.SendCodeBtn>
         </S.IdHeader>
