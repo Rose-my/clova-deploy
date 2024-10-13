@@ -5,10 +5,12 @@ import Footer from "./components/Footer";
 import InputFields from "./components/InputFields";
 import Guide from "./components/Guide";
 import Header from "./components/Header";
+import { usePostSearch } from "@hooks/usePostSearch";
 
 export default function index() {
   const [ifGuideClicked, setIfGuideClicked] = useState(false);
 
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [startHour, setStartHour] = useState("");
   const [endHour, setEndHour] = useState("");
@@ -18,6 +20,8 @@ export default function index() {
   const [modalDisplay, setModalDisplay] = useState(true);
   const [clickLoc, setClickLoc] = useState("");
 
+  const { mutate: postSearchMutate } = usePostSearch();
+
   const handleGuidelineClick = () => {
     setIfGuideClicked(!ifGuideClicked);
   };
@@ -25,6 +29,7 @@ export default function index() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
+    if (name === "description") setDescription(value);
     if (name === "date") setDate(value);
     if (name === "startHour") setStartHour(value);
     if (name === "endHour") setEndHour(value);
@@ -49,6 +54,16 @@ export default function index() {
     setModalDisplay(true);
   }
 
+  function handleSearch() {
+    postSearchMutate({
+      lostdate: date,
+      losttime1: startHour,
+      losttime2: endHour,
+      getwhere: location,
+      description: description,
+    });
+  }
+
   return (
     <S.Container>
       <Header isScrolled={isScrolled} setIsScrolled={setIsScrolled} />
@@ -64,6 +79,8 @@ export default function index() {
         modalDisplay={modalDisplay}
         handleLocModify={handleLocModify}
         clickLoc={clickLoc}
+        handleSearch={handleSearch}
+        description={description}
       />
       <Guide handleGuidelineClick={handleGuidelineClick} ifGuideClicked={ifGuideClicked} />
       {ifGuideClicked && <NoticeText />}

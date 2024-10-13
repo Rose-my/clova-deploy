@@ -1,5 +1,4 @@
 import { PencilIc, SearchIc } from "@assets/index";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FilteredLocModal from "./FilteredLocModal";
 
@@ -15,6 +14,8 @@ interface Props {
   modalDisplay: boolean;
   clickLoc: string;
   handleLocModify: () => void;
+  handleSearch: () => void;
+  description: string;
 }
 
 export default function InputFields(props: Props) {
@@ -30,20 +31,20 @@ export default function InputFields(props: Props) {
     modalDisplay,
     clickLoc,
     handleLocModify,
+    handleSearch,
+    description,
   } = props;
-
-  const navigate = useNavigate();
-
-  const isFormValid = date && startHour && endHour && location;
-
-  const handleSearchClick = () => {
-    navigate("/results/top");
-  };
 
   return (
     <Container $isScrolled={isScrolled}>
       <SearchIcon $isScrolled={isScrolled} />
-      <SearchField type="text" placeholder="찾고 싶은 물건에 대해 설명해주세요." />
+      <SearchField
+        type="text"
+        name="description"
+        placeholder="찾고 싶은 물건에 대해 설명해주세요."
+        value={description}
+        onChange={handleInputChange}
+      />
       <Field>
         <Title>분실 시간</Title>
         <TimeContainer>
@@ -92,7 +93,7 @@ export default function InputFields(props: Props) {
           </LocationContainer>
         )}
       </Field>
-      <SearchBtn type="button" onClick={handleSearchClick} disabled={!isFormValid}>
+      <SearchBtn type="button" onClick={handleSearch} disabled={!description}>
         검색하기
       </SearchBtn>
       <FilteredLocModal modalDisplay={modalDisplay} location={location} handleSelectLocation={handleSelectLocation} />
