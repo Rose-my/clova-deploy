@@ -29,8 +29,8 @@ const CheckboxContainer = styled.div`
 
 const LabelText = styled.span`
   margin-left: 0.5rem;
-  color: #495057;
-  font-size: 1rem;
+  color: #161616b4;
+  font-size: 1.2rem;
 `;
 
 export default CustomCheckbox;
