@@ -73,7 +73,7 @@ export const FieldText = styled.p`
 //-----아이디 필드
 export const IdBox = styled.div`
   display: flex;
-  align-items: center;
+  align-items: end;
   position: relative;
   margin-bottom: 1.5rem;
 `;
@@ -87,7 +87,7 @@ export const IdHeader = styled.div`
 export const IdField = styled.input`
   flex: 1;
   width: 60%;
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 0 1.2rem 1.5rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
   font-size: 1.4rem;
@@ -108,6 +108,7 @@ export const DomainText = styled.span`
   ${({ theme }) => theme.fonts.Field};
 
   margin-left: 0.5rem;
+  padding: 0 0 1.2rem;
   color: #495057;
   font-size: 1.3rem;
 `;
@@ -150,7 +151,7 @@ export const CodeBox = styled.div`
 
 export const CodeField = styled.input<{ $isvalid: boolean }>`
   flex: 1;
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 0 1.2rem 1.5rem;
   border: 2px solid ${({ $isvalid }) => ($isvalid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
   font-size: 1.4rem;
@@ -164,6 +165,10 @@ export const CodeField = styled.input<{ $isvalid: boolean }>`
 
   &::placeholder {
     color: #adb5bd;
+  }
+
+  &:disabled {
+    background-color: #6c757d;
   }
 `;
 
@@ -185,7 +190,7 @@ export const PwBox = styled.div`
 `;
 
 export const PwField = styled.input`
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 0 1.2rem 1.5rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
   font-size: 1.4rem;
@@ -203,7 +208,7 @@ export const PwField = styled.input`
 `;
 
 export const PwCheckField = styled.input<{ $isvalid: boolean }>`
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 0 1.2rem 1.5rem;
   border: 2px solid ${({ $isvalid }) => ($isvalid ? "#28a745" : "#ced4da")};
   border-radius: 8px;
   font-size: 1.4rem;
@@ -233,7 +238,7 @@ export const NicknameBox = styled.div`
 `;
 
 export const NicknameField = styled.input`
-  padding: 0.8rem 1rem;
+  padding: 1.2rem 0 1.2rem 1.5rem;
   border: 2px solid #ced4da;
   border-radius: 8px;
   font-size: 1.4rem;
@@ -264,7 +269,7 @@ export const MandatoryNotice = styled.span`
 
 export const SignupBtn = styled.button<{ disabled: boolean }>`
   margin-top: 3rem;
-  padding: 0.85rem;
+  padding: 1.3rem;
   border: none;
   border-radius: 8px;
   background-color: ${({ disabled }) => (disabled ? "#ced4da" : "#197a3a")};
