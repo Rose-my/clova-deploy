@@ -43,7 +43,7 @@ export default function index() {
           },
 
           onError: () => {
-            setUploadError("설명을 생성하지 못했어요. 다시 시도해주세요.");
+            setUploadError("설명을 생성하지 못했어요.");
             setIsUploading(false);
           },
         },
@@ -58,13 +58,26 @@ export default function index() {
   return (
     <U.Container>
       <Header title="습득물 등록" url="/search" />
-      {picStatus && <Pic isVerified={isVerified} setVerified={setVerified} setLostImgUrl={setLostImgUrl} />}
-      {picStatus && isVerified && (
+      {picStatus && (
+        <Pic
+          uploadError={uploadError}
+          isVerified={isVerified}
+          setVerified={setVerified}
+          setLostImgUrl={setLostImgUrl}
+          imgDesc={imgDesc}
+        />
+      )}
+      {imgDesc && picStatus && isVerified && (
         <U.SubmitButton disabled={isUploading || !imgDesc} onClick={handlePicStatus}>
-          {imgDesc ? "물건 설명보기" : "설명 생성중"}
+          물건 설명보기
         </U.SubmitButton>
       )}
-      {uploadError !== "" && !isUploading && <U.ErrorText>{uploadError}</U.ErrorText>}
+      {uploadError !== "" && !isUploading && (
+        <U.ErrorContainer>
+          <U.ErrorText>{uploadError}</U.ErrorText>
+          <U.ErrorText>다시 시도해주세요.</U.ErrorText>
+        </U.ErrorContainer>
+      )}
       {!picStatus && lostImgUrl && <InputField lostImgUrl={lostImgUrl} imgDesc={imgDesc} />}
     </U.Container>
   );
