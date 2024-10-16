@@ -141,8 +141,16 @@ export const FooterText = styled.p`
   text-align: center;
 `;
 
-export const ErrorText = styled.span`
+export const ErrorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  justify-content: center;
+`;
+
+export const ErrorText = styled.p`
   margin-top: 0.5rem;
   color: #dc3545;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
 `;

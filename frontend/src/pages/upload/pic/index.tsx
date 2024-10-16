@@ -7,10 +7,18 @@ interface Props {
   isVerified: boolean;
   setVerified: React.Dispatch<React.SetStateAction<boolean>>;
   setLostImgUrl: React.Dispatch<React.SetStateAction<File | undefined>>;
+  uploadError: string;
+  imgDesc: {
+    category: string;
+    description: string;
+    title: string;
+    losttime: string;
+    lostdate: string;
+  } | null;
 }
 
 export default function index(props: Props) {
-  const { isVerified, setVerified, setLostImgUrl } = props;
+  const { isVerified, setVerified, setLostImgUrl, uploadError, imgDesc } = props;
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -32,9 +40,18 @@ export default function index(props: Props) {
           onChange={uploadImg}
         />
       </ProfileUploadBtn>
-      {!isVerified && <InstructionText>습득한 물건 이미지를 등록해주세요!</InstructionText>}
-      {!isVerified && <InstructionText>c.lova(클로바)가 물건에 대해 설명해드릴게요.</InstructionText>}
-      {isVerified && <InstructionText>c.lova(클로바)에게 물건 설명을 부탁했어요.</InstructionText>}
+      {!isVerified && <InstructionText $loading={false}>습득한 물건 이미지를 등록해주세요!</InstructionText>}
+      {!isVerified && <InstructionText $loading={false}>c.lova(클로바)가 물건에 대해 설명해드릴게요.</InstructionText>}
+      {isVerified && <InstructionText $loading={false}>c.lova(클로바)에게 물건 설명을 부탁했어요.</InstructionText>}
+      <IsVerifiedBox>
+        {isVerified &&
+          uploadError === "" &&
+          (imgDesc ? (
+            <InstructionText $loading={true}>설명 생성 완료 !</InstructionText>
+          ) : (
+            <InstructionText $loading={true}>설명 생성 중 ...</InstructionText>
+          ))}
+      </IsVerifiedBox>
     </ImageUploadContainer>
   );
 }
@@ -70,9 +87,17 @@ const Profile = styled.img`
   object-position: center;
 `;
 
-const InstructionText = styled.p`
+const InstructionText = styled.p<{ $loading: boolean }>`
   margin-top: 1rem;
-  color: #555;
-  font-size: 1.2rem;
+  color: ${({ $loading }) => ($loading ? "#117b18" : "#555")};
+  font-size: ${({ $loading }) => ($loading ? "1.5rem" : "1.2rem")};
   text-align: center;
+`;
+
+const IsVerifiedBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  justify-content: center;
+  width: 100%;
 `;
