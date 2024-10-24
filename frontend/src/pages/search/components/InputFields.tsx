@@ -1,5 +1,4 @@
 import { PencilIc, GreenPencilIc } from "@assets/index";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FilteredLocModal from "./FilteredLocModal";
 
