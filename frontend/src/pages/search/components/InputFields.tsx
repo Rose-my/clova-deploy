@@ -1,4 +1,5 @@
-import { PencilIc, SearchIc } from "@assets/index";
+import { PencilIc, GreenPencilIc } from "@assets/index";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import FilteredLocModal from "./FilteredLocModal";
 
@@ -37,7 +38,10 @@ export default function InputFields(props: Props) {
 
   return (
     <Container $isScrolled={isScrolled}>
-      <SearchIcon $isScrolled={isScrolled} />
+      <WriteIcon $isScrolled={isScrolled} />
+      <Title>
+        찾고 싶은 물건에 대해 설명해주세요. <span>* 필수</span>
+      </Title>
       <SearchField
         type="text"
         name="description"
@@ -48,7 +52,7 @@ export default function InputFields(props: Props) {
       <Field>
         <Title>분실 시간</Title>
         <TimeContainer>
-          <DateInput type="text" name="date" placeholder="2024-08-08" value={date} onChange={handleInputChange} />
+          <DateInput type="date" name="date" value={date} $hasValue={!!date} onChange={handleInputChange} />
           <TimeInputBox>
             <TimeInput
               type="text"
@@ -108,16 +112,16 @@ const Container = styled.div<{ $isScrolled: boolean }>`
   position: relative;
 
   /* padding: 4rem 2rem 3rem; */
-  padding: ${({ $isScrolled }) => ($isScrolled ? "12rem 2rem 3rem" : "8rem 2rem 3rem")};
+  padding: ${({ $isScrolled }) => ($isScrolled ? "14rem 2rem 3rem" : "10rem 2rem 3rem")};
   background-color: #f9f9f9;
 `;
 
-const SearchIcon = styled(SearchIc)<{ $isScrolled: boolean }>`
+const WriteIcon = styled(GreenPencilIc)<{ $isScrolled: boolean }>`
   position: absolute;
-  top: ${({ $isScrolled }) => ($isScrolled ? "14rem" : "10rem")};
+  top: ${({ $isScrolled }) => ($isScrolled ? "19rem" : "15rem")};
   left: 4rem;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
 `;
 
 const SearchField = styled.input`
@@ -146,9 +150,17 @@ const Field = styled.div`
 `;
 
 const Title = styled.p`
-  ${({ theme }) => theme.fonts.Field};
-
+  font-family: WavvePADO-Regular;
+  color: #3a3f3b;
+  font-style: normal;
   font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 140%;
+
+  & > span {
+    color: ${({ theme }) => theme.colors.red};
+    font-size: 1rem;
+  }
 `;
 
 const TimeContainer = styled.div`
@@ -167,13 +179,18 @@ const LocationContainer = styled.div`
   position: relative;
 `;
 
-const DateInput = styled.input`
+const DateInput = styled.input<{ $hasValue: boolean }>`
   width: auto;
-  padding: 1.5rem 0 1.2rem 1.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  padding: 1.5rem 1.2rem;
+  border: 2px solid #ced4da;
+  border-radius: 10px;
+  font-family: WavvePADO-Regular;
+  color: ${({ $hasValue }) => ($hasValue ? "#000" : "#adb5bd")};
+  font-style: normal;
   font-size: 1.4rem;
+  font-weight: 700;
   text-align: left;
+  line-height: 140%; /* 25.2px */
 
   &:focus {
     border-color: #495057;
@@ -181,12 +198,8 @@ const DateInput = styled.input`
     box-shadow: 0 4px 12px rgb(73 80 87 / 20%);
   }
 
-  &::placeholder {
-    color: #adb5bd;
-  }
-
   @media (width <= 37.6rem) {
-    width: 80%;
+    width: 100%;
   }
 `;
 
@@ -199,8 +212,8 @@ const TimeInputBox = styled.div`
 const TimeInput = styled.input`
   width: 4rem;
   padding: 1.5rem 0 1.2rem 0.8rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  border: 2px solid #ced4da;
+  border-radius: 10px;
   font-size: 1.4rem;
   text-align: left;
 
@@ -227,8 +240,8 @@ const TimeText = styled.span`
 const LocationInput = styled.input`
   width: 100%;
   padding: 1.5rem 0 1.2rem 1.5rem;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+  border: 2px solid #ced4da;
+  border-radius: 10px;
   font-size: 1.4rem;
   text-align: left;
 
