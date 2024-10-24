@@ -44,7 +44,7 @@ export default function InputFields(props: Props) {
       <SearchField
         type="text"
         name="description"
-        placeholder="찾고 싶은 물건에 대해 설명해주세요."
+        placeholder="초록색 스타벅스 텀블러"
         value={description}
         onChange={handleInputChange}
       />
